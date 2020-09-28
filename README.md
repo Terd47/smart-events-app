@@ -1,0 +1,1 @@
+# smart-events-app
