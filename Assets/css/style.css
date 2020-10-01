@@ -1,0 +1,32 @@
+/* Weekly Planner Styles */
+.plannerTile {
+    border: 1px solid black;
+    width: auto;
+}
+
+.plannerHeader {
+    height: 8%;
+}
+
+.plannerUL {
+    height: 250px;
+}
+
+.plannerUL li {
+    background-color: #3090cf;
+    color: white;
+    width: 100%;
+    border-radius: 10px;
+    padding: 3%;
+}
+
+.select {
+    width: 50%;
+}
+
+input[type="submit"] {
+    float: right;
+    width: 50%;
+}
+
+/* Flip Effects */
