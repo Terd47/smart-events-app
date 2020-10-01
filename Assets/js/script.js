@@ -8,202 +8,31 @@ var ticketmasterKey = "KiAinN6vNRl0b9VY44tRzV4fBlEOdB5C";
 var ticketmasterurl = "https://app.ticketmaster.com/discovery/v2/classifications.json?apikey=" + ticketmasterKey;
 
 var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
-var nyTimesurl = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + nyTimesKey;
-
-
-//-------------------News------------------------------------------------------------------------/
-$.ajax({
-    url: nyTimesurl,
-    method: 'GET'
-}).then(function (results) {
-    console.log(results);
-    console.log(results);
-
-// --------------------------------------------------------top-stories--------------------------------------------------------------------------
-    $("#top-stories").on("click", function () {
-        $('#topStories').empty();
-        for (var i = 0; i < results.results.length; i+= 11) {
-            var link = $("<a>");
-            link.attr('href', (results.results[i].short_url));
-            link.text(results.results[i].title);
-            $("#topStories").append(link);
-
-    }});
-
+// ------------------------------------tabs-for-news-----------------------------------------------------------------------
+$(".is-active").on("click", function(){
+    var section = $(this).text().trim();
     
-    // ---------------------world-headlines------------------------------------------
-    
-    var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/world.json?api-key=" + nyTimesKey;
+     var nyTimesUrl = "https://api.nytimes.com/svc/topstories/v2/" + section + ".json?api-key=" + nyTimesKey;
 
-    $.ajax({
-        url: nytWorldUrl,
-        method: 'GET'})
-        .then(function (response){
-            console.log(response);
-       
+     $.ajax({
+         url: nyTimesUrl,
+         method: 'GET'
+     }).then(function (response) {
+             console.log(response);
+         
 
-        $("#world").on("click", function () {
-            $('#topStories').empty();
-            for (var i = 0; i < response.results.length; i+= 11) {
-                var link = $("<a>");
-                link.attr('href', (response.results[i].short_url));
-                link.text(response.results[i].title);
-                $("#topStories").append(link);
-            }
-        });
-    })
-    
-    // ----------------------------U.S.-headlines---------------------------------------------
-    // 
-    var nytUSUrl = "https://api.nytimes.com/svc/topstories/v2/US.json?api-key=" + nyTimesKey;
+             $(".is-active").on("click", function () {
+                 $('#topStories').empty();
+                 for (var i = 0; i < response.results.length; i += 11) {
+                     var link = $("<a>");
+                     link.attr('href', (response.results[i].short_url));
+                     link.text(response.results[i].title);
+                     $("#topStories").append(link);
+                 }
+             });
 
-    $.ajax({
-        url: nytUSUrl,
-        method: 'GET'})
-        .then(function (response){
-            console.log(response);
-       
-
-        $("#us").on("click", function () {
-            $('#topStories').empty();
-            for (var i = 0; i < response.results.length; i+= 11) {
-                var link = $("<a>");
-                link.attr('href', (response.results[i].short_url));
-                link.text(response.results[i].title);
-                $("#topStories").append(link);
-            }
-        });
-
-// -------------------------------------Politics-------------------------------------------------
-var nytPoliticUrl = "https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=" + nyTimesKey;
-
-    $.ajax({
-        url: nytPoliticUrl,
-        method: 'GET'})
-        .then(function (response){
-            console.log(response);
-       
-
-        $("#politics").on("click", function () {
-            $('#topStories').empty();
-            for (var i = 0; i < response.results.length; i+= 11) {
-                var link = $("<a>");
-                link.attr('href', (response.results[i].short_url));
-                link.text(response.results[i].title);
-                $("#topStories").append(link);
-            }
-        });
-
-    })
-    
-});
-
-// ---------------------------------business-------------------------------------------------------------
-
-var nytBusUrl = "https://api.nytimes.com/svc/topstories/v2/business.json?api-key=" + nyTimesKey;
-
-    $.ajax({
-        url: nytBusUrl,
-        method: 'GET'})
-        .then(function (response){
-            console.log(response);
-       
-
-        $("#business").on("click", function () {
-            $('#topStories').empty();
-            for (var i = 0; i < response.results.length; i+= 11) {
-                var link = $("<a>");
-                link.attr('href', (response.results[i].short_url));
-                link.text(response.results[i].title);
-                $("#topStories").append(link);
-            }
-        });
-});
-// ---------------------------------------------------health-----------------------------------------------------
-var nytHealthUrl = "https://api.nytimes.com/svc/topstories/v2/health.json?api-key=" + nyTimesKey;
-
-    $.ajax({
-        url: nytHealthUrl,
-        method: 'GET'})
-        .then(function (response){
-            console.log(response);
-       
-
-        $("#health").on("click", function () {
-            $('#topStories').empty();
-            for (var i = 0; i < response.results.length; i+= 11) {
-                var link = $("<a>");
-                link.attr('href', (response.results[i].short_url));
-                link.text(response.results[i].title);
-                $("#topStories").append(link);
-            }
-        });
-
-//-------------------------------------------------------------------Sports---------------------------------------------------
-        var nytSportUrl = "https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=" + nyTimesKey;
-
-        $.ajax({
-            url: nytSportUrl,
-            method: 'GET'})
-            .then(function (response){
-                console.log(response);
-           
-    
-            $("#sports").on("click", function () {
-                $('#topStories').empty();
-                for (var i = 0; i < response.results.length; i+= 11) {
-                    var link = $("<a>");
-                    link.attr('href', (response.results[i].short_url));
-                    link.text(response.results[i].title);
-                    $("#topStories").append(link);
-                }
-            });
-        });    
-// -----------------------------------------------------Food-----------------------------------------------------------
-
-        var nytFoodUrl = "https://api.nytimes.com/svc/topstories/v2/food.json?api-key=" + nyTimesKey;
-
-        $.ajax({
-            url: nytFoodUrl,
-            method: 'GET'})
-            .then(function (response){
-                console.log(response);
-           
-    
-            $("#food").on("click", function () {
-                $('#topStories').empty();
-                for (var i = 0; i < response.results.length; i+= 11) {
-                    var link = $("<a>");
-                    link.attr('href', (response.results[i].short_url));
-                    link.text(response.results[i].title);
-                    $("#topStories").append(link);
-                }
-            });
-        });
-
-// ---------------------------------------------------------Insider--------------------------------------------------------------
-        var nytInsiderUrl = "https://api.nytimes.com/svc/topstories/v2/insider.json?api-key=" + nyTimesKey;
-
-    $.ajax({
-        url: nytInsiderUrl,
-        method: 'GET'})
-        .then(function (response){
-            console.log(response);
-       
-
-        $("#insider").on("click", function () {
-            $('#topStories').empty();
-            for (var i = 0; i < response.results.length; i+= 11) {
-                var link = $("<a>");
-                link.attr('href', (response.results[i].short_url));
-                link.text(response.results[i].title);
-                $("#topStories").append(link);
-            }
-        });
-
-        });
-
-    });
+         });
+     
 
 
 // Weekly Planner
