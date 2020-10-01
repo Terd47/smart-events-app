@@ -19,7 +19,7 @@ $.ajax({
     console.log(results);
     console.log(results);
 
-
+// --------------------------------------------------------top-stories--------------------------------------------------------------------------
     $("#top-stories").on("click", function () {
         for (var i = 0; i < results.results.length; i++) {
             var link = $("<a>");
@@ -28,6 +28,182 @@ $.ajax({
             $("#topStories").append(link);
 
     }});
+
+    
+    // ---------------------world-headlines------------------------------------------
+    
+    var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/world.json?api-key=" + nyTimesKey;
+
+    $.ajax({
+        url: nytWorldUrl,
+        method: 'GET'})
+        .then(function (response){
+            console.log(response);
+       
+
+        $("#world").on("click", function () {
+            $('#topStories').empty();
+            for (var i = 0; i < response.results.length; i+= 11) {
+                var link = $("<a>");
+                link.attr('href', (response.results[i].short_url));
+                link.text(response.results[i].title);
+                $("#topStories").append(link);
+            }
+        });
+    })
+    
+    // ----------------------------U.S.-headlines---------------------------------------------
+    // 
+    var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/US.json?api-key=" + nyTimesKey;
+
+    $.ajax({
+        url: nytWorldUrl,
+        method: 'GET'})
+        .then(function (response){
+            console.log(response);
+       
+
+        $("#us").on("click", function () {
+            $('#topStories').empty();
+            for (var i = 0; i < response.results.length; i+= 11) {
+                var link = $("<a>");
+                link.attr('href', (response.results[i].short_url));
+                link.text(response.results[i].title);
+                $("#topStories").append(link);
+            }
+        });
+
+// -------------------------------------Politics-------------------------------------------------
+var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=" + nyTimesKey;
+
+    $.ajax({
+        url: nytWorldUrl,
+        method: 'GET'})
+        .then(function (response){
+            console.log(response);
+       
+
+        $("#politics").on("click", function () {
+            $('#topStories').empty();
+            for (var i = 0; i < response.results.length; i+= 11) {
+                var link = $("<a>");
+                link.attr('href', (response.results[i].short_url));
+                link.text(response.results[i].title);
+                $("#topStories").append(link);
+            }
+        });
+
+    })
+    
+});
+
+// ---------------------------------business-------------------------------------------------------------
+
+var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/business.json?api-key=" + nyTimesKey;
+
+    $.ajax({
+        url: nytWorldUrl,
+        method: 'GET'})
+        .then(function (response){
+            console.log(response);
+       
+
+        $("#business").on("click", function () {
+            $('#topStories').empty();
+            for (var i = 0; i < response.results.length; i+= 11) {
+                var link = $("<a>");
+                link.attr('href', (response.results[i].short_url));
+                link.text(response.results[i].title);
+                $("#topStories").append(link);
+            }
+        });
+});
+// ---------------------------------------------------health-----------------------------------------------------
+var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/health.json?api-key=" + nyTimesKey;
+
+    $.ajax({
+        url: nytWorldUrl,
+        method: 'GET'})
+        .then(function (response){
+            console.log(response);
+       
+
+        $("#health").on("click", function () {
+            $('#topStories').empty();
+            for (var i = 0; i < response.results.length; i+= 11) {
+                var link = $("<a>");
+                link.attr('href', (response.results[i].short_url));
+                link.text(response.results[i].title);
+                $("#topStories").append(link);
+            }
+        });
+
+//-------------------------------------------------------------------Sports---------------------------------------------------
+        var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=" + nyTimesKey;
+
+        $.ajax({
+            url: nytWorldUrl,
+            method: 'GET'})
+            .then(function (response){
+                console.log(response);
+           
+    
+            $("#sports").on("click", function () {
+                $('#topStories').empty();
+                for (var i = 0; i < response.results.length; i+= 11) {
+                    var link = $("<a>");
+                    link.attr('href', (response.results[i].short_url));
+                    link.text(response.results[i].title);
+                    $("#topStories").append(link);
+                }
+            });
+        });    
+// -----------------------------------------------------Food-----------------------------------------------------------
+
+        var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/food.json?api-key=" + nyTimesKey;
+
+        $.ajax({
+            url: nytWorldUrl,
+            method: 'GET'})
+            .then(function (response){
+                console.log(response);
+           
+    
+            $("#food").on("click", function () {
+                $('#topStories').empty();
+                for (var i = 0; i < response.results.length; i+= 11) {
+                    var link = $("<a>");
+                    link.attr('href', (response.results[i].short_url));
+                    link.text(response.results[i].title);
+                    $("#topStories").append(link);
+                }
+            });
+        });
+
+// ---------------------------------------------------------Insider--------------------------------------------------------------
+        var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/insider.json?api-key=" + nyTimesKey;
+
+    $.ajax({
+        url: nytWorldUrl,
+        method: 'GET'})
+        .then(function (response){
+            console.log(response);
+       
+
+        $("#insider").on("click", function () {
+            $('#topStories').empty();
+            for (var i = 0; i < response.results.length; i+= 11) {
+                var link = $("<a>");
+                link.attr('href', (response.results[i].short_url));
+                link.text(response.results[i].title);
+                $("#topStories").append(link);
+            }
+        });
+
+        });
+
+    });
+
 
 // Weekly Planner
 
@@ -153,3 +329,4 @@ $('input:submit').on("click", function(event){
 });
 
 $("#clearSch").on("click", clearSchedule);
+});
