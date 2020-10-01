@@ -21,7 +21,8 @@ $.ajax({
 
 // --------------------------------------------------------top-stories--------------------------------------------------------------------------
     $("#top-stories").on("click", function () {
-        for (var i = 0; i < results.results.length; i++) {
+        $('#topStories').empty();
+        for (var i = 0; i < results.results.length; i+= 11) {
             var link = $("<a>");
             link.attr('href', (results.results[i].short_url));
             link.text(results.results[i].title);
