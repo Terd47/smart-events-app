@@ -24,9 +24,7 @@ function checkSaved() {
                     var lis = localStorage.getItem(localStorage.key(i));
                     console.log(lis);
                 // Creates lis with content from storage
-                    var newLi = $("<li>");
-                    newLi.text(lis);
-                    $(".plannerUL").eq(e).append(newLi);
+                    $(".plannerUL").eq(e).append(lis);
                     
                 } else {
                     console.log("failed");
@@ -39,8 +37,11 @@ function checkSaved() {
 function saveContent() {    
     // Save to local under the key of the date for each date
     for (var i =0; i < $(".plannerHeader").length; i++) {
-        var lis = $(".plannerUL").eq(i).children("li").html();
+        var lis = $(".plannerUL").eq(i).html();
+        // Checks to ensure it only saves content
         if (lis === undefined) {
+            
+        } else if (lis === "") {
             
         } else {
             localStorage.setItem($(".plannerHeader").eq(i).text(), lis);
