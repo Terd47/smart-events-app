@@ -11,6 +11,24 @@ var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
 var nyTimesurl = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + nyTimesKey;
 
 
+//-------------------News------------------------------------------------------------------------/
+$.ajax({
+    url: nyTimesurl,
+    method: 'GET'
+}).then(function (results) {
+    console.log(results);
+    console.log(results);
+
+
+    $("#top-stories").on("click", function () {
+        for (var i = 0; i < results.results.length; i++) {
+            var link = $("<a>");
+            link.attr('href', (results.results[i].short_url));
+            link.text(results.results[i].title);
+            $("#topStories").append(link);
+
+    }});
+
 // Weekly Planner
 
 // Checking local storage for previously saved events 
