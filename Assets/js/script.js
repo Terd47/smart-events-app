@@ -55,10 +55,10 @@ $.ajax({
     
     // ----------------------------U.S.-headlines---------------------------------------------
     // 
-    var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/US.json?api-key=" + nyTimesKey;
+    var nytUSUrl = "https://api.nytimes.com/svc/topstories/v2/US.json?api-key=" + nyTimesKey;
 
     $.ajax({
-        url: nytWorldUrl,
+        url: nytUSUrl,
         method: 'GET'})
         .then(function (response){
             console.log(response);
@@ -75,10 +75,10 @@ $.ajax({
         });
 
 // -------------------------------------Politics-------------------------------------------------
-var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=" + nyTimesKey;
+var nytPoliticUrl = "https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=" + nyTimesKey;
 
     $.ajax({
-        url: nytWorldUrl,
+        url: nytPoliticUrl,
         method: 'GET'})
         .then(function (response){
             console.log(response);
@@ -100,10 +100,10 @@ var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/politics.json?api-k
 
 // ---------------------------------business-------------------------------------------------------------
 
-var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/business.json?api-key=" + nyTimesKey;
+var nytBusUrl = "https://api.nytimes.com/svc/topstories/v2/business.json?api-key=" + nyTimesKey;
 
     $.ajax({
-        url: nytWorldUrl,
+        url: nytBusUrl,
         method: 'GET'})
         .then(function (response){
             console.log(response);
@@ -120,10 +120,10 @@ var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/business.json?api-k
         });
 });
 // ---------------------------------------------------health-----------------------------------------------------
-var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/health.json?api-key=" + nyTimesKey;
+var nytHealthUrl = "https://api.nytimes.com/svc/topstories/v2/health.json?api-key=" + nyTimesKey;
 
     $.ajax({
-        url: nytWorldUrl,
+        url: nytHealthUrl,
         method: 'GET'})
         .then(function (response){
             console.log(response);
@@ -140,10 +140,10 @@ var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/health.json?api-key
         });
 
 //-------------------------------------------------------------------Sports---------------------------------------------------
-        var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=" + nyTimesKey;
+        var nytSportUrl = "https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=" + nyTimesKey;
 
         $.ajax({
-            url: nytWorldUrl,
+            url: nytSportUrl,
             method: 'GET'})
             .then(function (response){
                 console.log(response);
@@ -161,10 +161,10 @@ var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/health.json?api-key
         });    
 // -----------------------------------------------------Food-----------------------------------------------------------
 
-        var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/food.json?api-key=" + nyTimesKey;
+        var nytFoodUrl = "https://api.nytimes.com/svc/topstories/v2/food.json?api-key=" + nyTimesKey;
 
         $.ajax({
-            url: nytWorldUrl,
+            url: nytFoodUrl,
             method: 'GET'})
             .then(function (response){
                 console.log(response);
@@ -182,10 +182,10 @@ var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/health.json?api-key
         });
 
 // ---------------------------------------------------------Insider--------------------------------------------------------------
-        var nytWorldUrl = "https://api.nytimes.com/svc/topstories/v2/insider.json?api-key=" + nyTimesKey;
+        var nytInsiderUrl = "https://api.nytimes.com/svc/topstories/v2/insider.json?api-key=" + nyTimesKey;
 
     $.ajax({
-        url: nytWorldUrl,
+        url: nytInsiderUrl,
         method: 'GET'})
         .then(function (response){
             console.log(response);
