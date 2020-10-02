@@ -22,7 +22,6 @@ function checkSaved() {
                 if (localStorage.key(i) == $(".plannerHeader").eq(e).text()){
                     console.log("matched");
                     var lis = localStorage.getItem(localStorage.key(i));
-                    console.log(lis);
                 // Creates lis with content from storage
                     $(".plannerUL").eq(e).append(lis);
                     
@@ -49,6 +48,18 @@ function saveContent() {
         
         
     }
+}
+
+function sortContent() {
+    Array.prototype.slice.call(document.querySelectorAll('.plannerUL li')).sort(function(a, b) {
+        console.log("A: ");
+        console.log(a);
+        console.log("B: ");
+        console.log(b);
+        return a.getAttribute('data-position').localeCompare(b.getAttribute('data-position'));
+      }).forEach(function(currValue) {
+        currValue.parentNode.appendChild(currValue);
+      });
 }
 
 function clearSchedule(){
@@ -119,20 +130,26 @@ function labelPlanner () {
 labelPlanner();
 checkSaved();
 
+
 // Adds User Event 
 $('input:submit').on("click", function(event){
     event.preventDefault();
     // Gets data from sibling input and select
     var userEvent = $(this).siblings().eq(1).val();
     var userTime = $(this).siblings().eq(2).find('option:selected').text();
+    var dataval = $(this).siblings().eq(2).find('option:selected').attr("data-position");
+    
 
     // Creates li element
     var li = $("<li>");
     li.text(userTime + " - " + userEvent);
-    li.attr("data-value", userTime);
+    li.attr("data-position", dataval);
     $(this).siblings().eq(0).append(li);
-
+    sortContent();
     saveContent();
+
+    
 });
 
 $("#clearSch").on("click", clearSchedule);
+
