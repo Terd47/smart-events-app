@@ -1,7 +1,7 @@
 var calendarificKey = "	f51769744b4472595fff806872c68a32095c4dc4";
 var calendarificurl = "https://calendarific.com/api/v2/holidays?api_key=" + calendarificKey;
 
-<<<<<<< HEAD
+
 var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
 var nyTimesurl = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + nyTimesKey;
 
@@ -94,10 +94,7 @@ $('#attractionEvents').on('click', function(){
 
 $('#justEvents').on('click', function(){
     getEvents();
-})
-=======
-var ticketmasterKey = "KiAinN6vNRl0b9VY44tRzV4fBlEOdB5C";
-var ticketmasterurl = "https://app.ticketmaster.com/discovery/v2/classifications.json?apikey=" + ticketmasterKey;
+});
 
 var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
 // ------------------------------------tabs-for-news-----------------------------------------------------------------------
@@ -123,8 +120,9 @@ $(".is-active").on("click", function(){
                      $("#topStories").append(link);
                  }
              });
-
+            });
          });
+        
 
          //-------------------------------------search for news-------------------------------------------
          var searchId = $("#search");
@@ -140,7 +138,7 @@ $(".is-active").on("click", function(){
              var nytSearckKey = "ZAYcM5GbhkBjdLu6GGSpxwqrYypoxmoG";
              var nytSearchUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTxt +"&api-key=" + nytSearckKey;
              console.log(nytSearchUrl + "--SURL--");
-     
+         
              
              $.ajax({
                  url: nytSearchUrl,
@@ -158,7 +156,10 @@ $(".is-active").on("click", function(){
                      searchLink.append($("<li>"));
                      $("#topStories").append(searchLink);
                  console.log(searchLink, "p");
-
+                 }
+                });
+         });
+                
 
 // Weather
 function getLocation() {
@@ -400,10 +401,4 @@ $('input:submit').on("click", function(event){
     
 });
 
-$("#clearSch").on("click", clearSchedule);
-<<<<<<< HEAD
-
-=======
-});
->>>>>>> 9da318b5ab9034da6a9912b7ba14dcd5a52612b2
->>>>>>> af756d78651306e0b2a1981da257abd305db57ee
+$("#clearSch").on("click", clearSchedule); 
