@@ -41,3 +41,27 @@ input[type="submit"] {
     width: 50%;
 }
 
+<<<<<<< HEAD
+=======
+/* Flip Effects */
+
+
+
+
+
+
+
+
+
+
+/* -----------news----------------------- */
+#topStories{
+    color: lightgreen;
+    font-size: 20px;
+    line-height: 35px;
+    font-style: italic;
+    list-style-position: inside;    
+    list-style-type: "__________________________";
+
+}
+>>>>>>> af756d78651306e0b2a1981da257abd305db57ee
