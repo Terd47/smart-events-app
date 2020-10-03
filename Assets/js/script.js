@@ -55,22 +55,26 @@ function getEvents(){
         method: "GET"
       }).then(function(events){
         var event1 = events._embedded.events.length;
+        $('#event-div').html(eventDiv)
         
          console.log(events);
+
          for(var i = 0; i < event1; i++) {
             var eventName = $('<p>');
             var eventInfo = $('<p>');
             var eventUrl = $('<p>');
+            var eventDate = events._embedded.events[i].dates.start.localDate;
+            eventName.attr("data-date", eventDate);
             eventName.text(events._embedded.events[i].name);
             eventInfo.text(events._embedded.events[i].info);
             eventUrl.text(events._embedded.events[i].url);
+            //eventDate.text(events._embedded.events[i].dates.start.localDate + " " + events._embedded.events[i].dates.start.localTime);
 
             $('#events').append(eventName);
             $('#events').append(eventInfo);
             $('#events').append(eventUrl);
-            console.log(events._embedded.events[i].name);
-            console.log(events._embedded.events[i].info);
-            console.log(events._embedded.events[i].url);
+            $('#events').append(eventDate);
+            
         }
 
 
