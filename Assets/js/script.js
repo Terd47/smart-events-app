@@ -1,5 +1,5 @@
 var calendarificKey = "	f51769744b4472595fff806872c68a32095c4dc4";
-var calendarificurl = "https://calendarific.com/api/v2/holidays?api_key=" + calendarificKey;
+var calendarificurl = "https://calendarific.com/api/v2/holidays?&country=US&year=2020&api_key=f51769744b4472595fff806872c68a32095c4dc4";
 
 
 var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
@@ -8,13 +8,6 @@ var nyTimesurl = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" 
 // ticket master ajax call
 var displayEvent = $('#get-events');
 
-function getLocation(){
-    if("geolocation" in navigator){
-        navigator.geolocation.getCurrentPosition(function(position){
-            $('#yourLocation').html("")
-        })
-    }
-}
 
 var ticketmasterKey = "KiAinN6vNRl0b9VY44tRzV4fBlEOdB5C";
 var eventDiv = `<div class="columns is-mobile">
@@ -75,9 +68,9 @@ function getEvents(){
             $('#events').append(eventName);
             $('#events').append(eventInfo);
             $('#events').append(eventUrl);
-            console.log(events._embedded.events[0].name);
-            console.log(events._embedded.events[0].info);
-            console.log(events._embedded.events[0].url);
+            console.log(events._embedded.events[i].name);
+            console.log(events._embedded.events[i].info);
+            console.log(events._embedded.events[i].url);
         }
 
 
