@@ -65,6 +65,23 @@ function getEvents(){
             var eventUrl = $('<p>');
             var eventDate = events._embedded.events[i].dates.start.localDate;
             eventName.attr("data-date", eventDate);
+
+            eventName.on('click', function(){
+            
+                for (var i = 0; i < 7; i++) {
+                    
+                    if ($(".date").eq(i).data('date') == $(this).data('date')) {
+                        
+                        console.log($(this).text());
+                        var e = $("<li>");
+                        e.text($(this).text());
+                        $(".plannerUL").eq(i).append(e);
+                        saveContent();
+                    }
+                }
+                
+            })
+
             eventName.text(events._embedded.events[i].name);
             eventInfo.text(events._embedded.events[i].info);
             eventUrl.text(events._embedded.events[i].url);
@@ -322,7 +339,7 @@ function GetDates(startDate, daysToAdd) {
         currentDate.setDate(startDate.getDate() + i);
         aryDates.push(DayAsString(currentDate.getDay()) + ", " + currentDate.getDate() + " " + MonthAsString(currentDate.getMonth()) + " " + currentDate.getFullYear());
     }
-
+    
     return aryDates;
 }
 function MonthAsString(monthIndex) {
@@ -365,8 +382,27 @@ function labelPlanner () {
     
         var p = $("<p>");
         p.text(aryDates[i]);
-        p.addClass(".date");
+        p.addClass("date");
+
+        // Setting date attribute
+        var dateObj = new Date();
+        var month = dateObj.getUTCMonth() + 1; //months from 1-12
+        var day = dateObj.getUTCDate() + i;
+        var year = dateObj.getUTCFullYear();
+
+        if (day < 10) {
+            newdate = year + "-" + month + "-" + "0" + day;
+        } else {
+            newdate = year + "-" + month + "-" + day;
+        }
+        
+
+        p.attr("data-date", newdate);
+
         $(".plannerHeader").eq(i).prepend(p);
+
+        
+
 
     }
     
