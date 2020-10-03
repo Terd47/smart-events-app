@@ -157,7 +157,7 @@ $(".is-active").on("click", function(){
              console.log(response);
          
 
-             $(".is-active").on("click", function () {
+            
                  $('#topStories').empty();
                  for (var i = 0; i < response.results.length; i += 11) {
                      var link = $("<a>");
@@ -168,7 +168,7 @@ $(".is-active").on("click", function(){
                  }
              });
             });
-         });
+         
         
 
          //-------------------------------------search for news-------------------------------------------
