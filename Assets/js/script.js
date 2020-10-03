@@ -1,6 +1,3 @@
-var openWeatherKey = "7f0107959f91d24fd331487876d42456";
-var openWeatherurl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid=" + openWeatherKey;
-
 var calendarificKey = "	f51769744b4472595fff806872c68a32095c4dc4";
 var calendarificurl = "https://calendarific.com/api/v2/holidays?api_key=" + calendarificKey;
 
@@ -163,6 +160,107 @@ $(".is-active").on("click", function(){
                  console.log(searchLink, "p");
 
 
+// Weather
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+        var p = $("<p>");
+        p.text("Geolocation is not supported by this browser.");
+        $(".weatherOverview").append(p);
+    }
+}
+
+function showPosition(position) {
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    console.log(lat + ", " + lon);
+    var openWeatherKey = "7f0107959f91d24fd331487876d42456";
+    var openWeatherurl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=" + openWeatherKey;
+
+    $.ajax({
+        url: openWeatherurl
+    }).then(function(response){
+        console.log(response);
+        // Description Section
+        var desDiv = $("<div>");
+        desDiv.addClass("tile is-child weatherTile");
+        var desH = $("<h3>");
+        desH.text("Overview");
+        desDiv.append(desH);
+        // Icon
+        var img = $("<img>");
+        img.attr("src", "Assets/images/"+response.current.weather[0].icon+".png");
+        desDiv.append(img);
+
+        var descriptionTxt = $("<p>");
+        descriptionTxt.text(response.current.weather[0].description);
+        desDiv.append(descriptionTxt);
+        // Appending div
+        $(".weatherOverview").append(desDiv);
+
+
+        // Temperature Section
+        var tempDiv = $("<div>");
+        tempDiv.addClass("tile is-child weatherTile");
+        var tempH = $("<h4>");
+        tempH.text("Temperature");
+        tempDiv.append(tempH);
+
+        // Farenheit
+        var F = response.current.temp;
+                F = F.toFixed(1);
+                var faren = $("<p>");
+                faren.text(F + " ° F");
+        tempDiv.append(faren);
+        // Celcius
+        var C = (response.current.temp - 32) * 5/9;
+                C = C.toFixed(1);
+                var celc = $("<p>");
+                celc.text(C + " ° C");
+        tempDiv.append(celc);
+        // Appending div
+        $(".weatherOverview").append(tempDiv);
+
+        // Wind Section
+        var windDiv = $("<div>");
+        windDiv.addClass("tile is-child weatherTile");
+        var windH = $("<h4>");
+        windH.text("Wind");
+        windDiv.append(windH);
+        
+        var windSpeed = $("<p>");
+        windSpeed.text("Wind Speed: " + response.current.wind_speed + " MPH");
+        windDiv.append(windSpeed);
+
+        var windDeg = $("<p>");
+        var deg = response.current.wind_deg;
+        if (deg > 330.1 && deg < 30.1) {
+            windDeg.text("Direction: N");
+        } else if (deg > 30.1 && deg < 60.1) {
+            windDeg.text("Direction: NE");
+        } else if (deg > 60.1 && deg < 120.1) {
+            windDeg.text("Direction: E");
+        } else if (deg > 120.1 && deg < 150.1) {
+            windDeg.text("Direction: SE");
+        } else if (deg > 150.1 && deg < 210.1) {
+            windDeg.text("Direction: S");
+        } else if (deg > 210.1 && deg < 240.1) {
+            windDeg.text("Direction: SW");
+        } else if (deg > 240.1 && deg < 300.1) {
+            windDeg.text("Direction: W");
+        } else if (deg > 300.1 && deg < 330.1) {
+            windDeg.text("Direction: NW");
+        }
+        windDiv.append(windDeg);
+        // Appending div
+        $(".weatherOverview").append(windDiv);
+    });
+}
+
+getLocation();
+
 // Weekly Planner
 
 // Checking local storage for previously saved events 
@@ -172,16 +270,12 @@ function checkSaved() {
             for (var e = 0; e < $(".plannerHeader").length; e++){
                 //   Sets text on match
                 if (localStorage.key(i) == $(".plannerHeader").eq(e).text()){
-                    console.log("matched");
                     var lis = localStorage.getItem(localStorage.key(i));
-                    console.log(lis);
                 // Creates lis with content from storage
-                    var newLi = $("<li>");
-                    newLi.text(lis);
-                    $(".plannerUL").eq(e).append(newLi);
+                    $(".plannerUL").eq(e).append(lis);
                     
                 } else {
-                    console.log("failed");
+                    console.log("localstorage failed");
                     
                 }
             }
@@ -191,8 +285,11 @@ function checkSaved() {
 function saveContent() {    
     // Save to local under the key of the date for each date
     for (var i =0; i < $(".plannerHeader").length; i++) {
-        var lis = $(".plannerUL").eq(i).children("li").html();
+        var lis = $(".plannerUL").eq(i).html();
+        // Checks to ensure it only saves content
         if (lis === undefined) {
+            
+        } else if (lis === "") {
             
         } else {
             localStorage.setItem($(".plannerHeader").eq(i).text(), lis);
@@ -200,6 +297,18 @@ function saveContent() {
         
         
     }
+}
+
+function sortContent() {
+    Array.prototype.slice.call(document.querySelectorAll('.plannerUL li')).sort(function(a, b) {
+        console.log("A: ");
+        console.log(a);
+        console.log("B: ");
+        console.log(b);
+        return a.getAttribute('data-position').localeCompare(b.getAttribute('data-position'));
+      }).forEach(function(currValue) {
+        currValue.parentNode.appendChild(currValue);
+      });
 }
 
 function clearSchedule(){
@@ -270,22 +379,31 @@ function labelPlanner () {
 labelPlanner();
 checkSaved();
 
+
 // Adds User Event 
 $('input:submit').on("click", function(event){
     event.preventDefault();
     // Gets data from sibling input and select
     var userEvent = $(this).siblings().eq(1).val();
     var userTime = $(this).siblings().eq(2).find('option:selected').text();
+    var dataval = $(this).siblings().eq(2).find('option:selected').attr("data-position");
+    
 
     // Creates li element
     var li = $("<li>");
     li.text(userTime + " - " + userEvent);
-    li.attr("data-value", userTime);
+    li.attr("data-position", dataval);
     $(this).siblings().eq(0).append(li);
-
+    sortContent();
     saveContent();
+
+    
 });
 
 $("#clearSch").on("click", clearSchedule);
+<<<<<<< HEAD
+
+=======
 });
 >>>>>>> 9da318b5ab9034da6a9912b7ba14dcd5a52612b2
+>>>>>>> af756d78651306e0b2a1981da257abd305db57ee
