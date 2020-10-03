@@ -70,3 +70,9 @@ input[type="submit"] {
     list-style-type: "__________________________";
 
 }
+/*---------------------events------------------*/
+.event {
+    margin: 2px;
+    padding: 5px;
+    max-width: 800px;
+}
