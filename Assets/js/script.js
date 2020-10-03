@@ -1,5 +1,5 @@
 var calendarificKey = "	f51769744b4472595fff806872c68a32095c4dc4";
-var calendarificurl = "https://calendarific.com/api/v2/holidays?api_key=" + calendarificKey;
+var calendarificurl = "https://calendarific.com/api/v2/holidays?&country=US&year=2020&api_key=f51769744b4472595fff806872c68a32095c4dc4";
 
 
 var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
