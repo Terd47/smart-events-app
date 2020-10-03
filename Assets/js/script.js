@@ -20,8 +20,8 @@ var eventDiv = `<div class="columns is-mobile">
 
 function localAttractions(){
 
-    
     var ticketmasterurl = "https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=" + ticketmasterKey;
+    
     $.ajax({
         url: ticketmasterurl,
         method: "GET"
@@ -30,12 +30,15 @@ function localAttractions(){
           console.log(response);
           console.log(response._embedded.attractions[0].name);
           var attract1 = response._embedded.attractions.length;
-        // $('#events').text(JSON.stringify(response._embedded.classifications[16].segment.name));
 
            for(var i = 0; i < attract1; i++) {
-               var placeName = $('<p>');
-               placeName.text(response._embedded.attractions[i].name);
+            var attractImage = $('<img>')
+            var placeName = $('<p>');
+               attractImage.attr('src',response._embedded.attractions[i].images[2].url)
+               placeName.text(response._embedded.attractions[i].name + " ");
                $('#attractions').append(placeName);
+               $('#attractions').append(attractImage);
+
                console.log(attract1);
            }
         
@@ -60,18 +63,15 @@ function getEvents(){
          console.log(events);
 
          for(var i = 0; i < event1; i++) {
-            var eventName = $('<p>');
-            var eventInfo = $('<p>');
-            var eventUrl = $('<p>');
+            var eventName = $('<div class="event"><p></div>');
+            var eventUrl = $('<div class="event"><p></div>');
             var eventDate = events._embedded.events[i].dates.start.localDate;
             eventName.attr("data-date", eventDate);
             eventName.text(events._embedded.events[i].name);
-            eventInfo.text(events._embedded.events[i].info);
             eventUrl.text(events._embedded.events[i].url);
             //eventDate.text(events._embedded.events[i].dates.start.localDate + " " + events._embedded.events[i].dates.start.localTime);
 
             $('#events').append(eventName);
-            $('#events').append(eventInfo);
             $('#events').append(eventUrl);
             $('#events').append(eventDate);
             
@@ -82,7 +82,6 @@ function getEvents(){
 
 
 }
-getEvents();
 
 
 $('#attractionEvents').on('click', function(){
