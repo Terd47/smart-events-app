@@ -5,6 +5,39 @@ var calendarificurl = "https://calendarific.com/api/v2/holidays?&country=US&year
 var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
 var nyTimesurl = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + nyTimesKey;
 
+
+//holiday---------------------------------------------------------------------------------------------------
+var dateObj = new Date();
+var day = dateObj.getUTCDate();
+var month = dateObj.getUTCMonth() + 1;
+
+var calendarificKey = "	f51769744b4472595fff806872c68a32095c4dc4";
+var calendarificurl = "https://calendarific.com/api/v2/holidays?&country=US&year=2020"  + "&month=" + month + "&api_key=f51769744b4472595fff806872c68a32095c4dc4";
+
+
+$.ajax({
+    url: calendarificurl,
+    method: 'GET'
+}).then(function (response) {
+        console.log(response, "CC");
+
+        var holiday = response.response.holidays;
+        for(var i =0; i<7; i++){
+            for(var x = 0; x<holiday.length; x++){
+                
+          if  ($(".date").eq(i).data("date") === holiday[x].date.iso){
+              var holList = $("<li>");
+              holList.text(holiday[x].name);
+              $(".plannerUL").eq(i).append(holList);
+          } 
+
+          console.log($(".date").eq(i).data("date"));
+        }}
+    
+});
+
+
+
 // ticket master ajax call
 var displayEvent = $('#get-events');
 
