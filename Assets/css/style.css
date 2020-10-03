@@ -21,7 +21,8 @@
 }
 
 .plannerUL {
-    height: 250px;
+    height: 250px;   
+    overflow: auto;
 }
 
 .plannerUL li {
@@ -41,6 +42,13 @@ input[type="submit"] {
     width: 50%;
 }
 
+#clearScheduleDiv {
+    text-align: center;
+}
+
+#clearSch {
+    margin: auto;
+}
 /* Flip Effects */
 
 

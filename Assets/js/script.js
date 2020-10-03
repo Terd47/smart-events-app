@@ -1,9 +1,42 @@
 var calendarificKey = "	f51769744b4472595fff806872c68a32095c4dc4";
-var calendarificurl = "https://calendarific.com/api/v2/holidays?api_key=" + calendarificKey;
+var calendarificurl = "https://calendarific.com/api/v2/holidays?&country=US&year=2020&api_key=f51769744b4472595fff806872c68a32095c4dc4";
 
 
 var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
 var nyTimesurl = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + nyTimesKey;
+
+
+//holiday---------------------------------------------------------------------------------------------------
+var dateObj = new Date();
+var day = dateObj.getUTCDate();
+var month = dateObj.getUTCMonth() + 1;
+
+var calendarificKey = "	f51769744b4472595fff806872c68a32095c4dc4";
+var calendarificurl = "https://calendarific.com/api/v2/holidays?&country=US&year=2020"  + "&month=" + month + "&api_key=f51769744b4472595fff806872c68a32095c4dc4";
+
+
+$.ajax({
+    url: calendarificurl,
+    method: 'GET'
+}).then(function (response) {
+        console.log(response, "CC");
+
+        var holiday = response.response.holidays;
+        for(var i =0; i<7; i++){
+            for(var x = 0; x<holiday.length; x++){
+                
+          if  ($(".date").eq(i).data("date") === holiday[x].date.iso){
+              var holList = $("<li>");
+              holList.text(holiday[x].name);
+              $(".plannerUL").eq(i).append(holList);
+          } 
+
+          console.log($(".date").eq(i).data("date"));
+        }}
+    
+});
+
+
 
 // ticket master ajax call
 var displayEvent = $('#get-events');
@@ -67,6 +100,23 @@ function getEvents(){
             var eventUrl = $('<div class="event"><p></div>');
             var eventDate = events._embedded.events[i].dates.start.localDate;
             eventName.attr("data-date", eventDate);
+
+            eventName.on('click', function(){
+            
+                for (var i = 0; i < 7; i++) {
+                    
+                    if ($(".date").eq(i).data('date') == $(this).data('date')) {
+                        
+                        console.log($(this).text());
+                        var e = $("<li>");
+                        e.text($(this).text());
+                        $(".plannerUL").eq(i).append(e);
+                        saveContent();
+                    }
+                }
+                
+            })
+
             eventName.text(events._embedded.events[i].name);
             eventUrl.text(events._embedded.events[i].url);
             //eventDate.text(events._embedded.events[i].dates.start.localDate + " " + events._embedded.events[i].dates.start.localTime);
@@ -321,7 +371,7 @@ function GetDates(startDate, daysToAdd) {
         currentDate.setDate(startDate.getDate() + i);
         aryDates.push(DayAsString(currentDate.getDay()) + ", " + currentDate.getDate() + " " + MonthAsString(currentDate.getMonth()) + " " + currentDate.getFullYear());
     }
-
+    
     return aryDates;
 }
 function MonthAsString(monthIndex) {
@@ -364,8 +414,27 @@ function labelPlanner () {
     
         var p = $("<p>");
         p.text(aryDates[i]);
-        p.addClass(".date");
+        p.addClass("date");
+
+        // Setting date attribute
+        var dateObj = new Date();
+        var month = dateObj.getUTCMonth() + 1; //months from 1-12
+        var day = dateObj.getUTCDate() + i;
+        var year = dateObj.getUTCFullYear();
+
+        if (day < 10) {
+            newdate = year + "-" + month + "-" + "0" + day;
+        } else {
+            newdate = year + "-" + month + "-" + day;
+        }
+        
+
+        p.attr("data-date", newdate);
+
         $(".plannerHeader").eq(i).prepend(p);
+
+        
+
 
     }
     
