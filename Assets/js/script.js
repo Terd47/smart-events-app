@@ -27,12 +27,45 @@ $(".is-active").on("click", function(){
                      var link = $("<a>");
                      link.attr('href', (response.results[i].short_url));
                      link.text(response.results[i].title);
+                     link.append($("<li>"));
                      $("#topStories").append(link);
                  }
              });
 
          });
+
+         //-------------------------------------search for news-------------------------------------------
+         var searchId = $("#search");
+         var searchTxt = "";
+         var searchBtn = $("#searchBtn");
      
+         
+         searchBtn.click(function () {
+             event.preventDefault();
+             searchTxt = searchId.val().trim();
+             console.log(searchTxt);
+     
+             var nytSearckKey = "ZAYcM5GbhkBjdLu6GGSpxwqrYypoxmoG";
+             var nytSearchUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTxt +"&api-key=" + nytSearckKey;
+             console.log(nytSearchUrl + "--SURL--");
+     
+             
+             $.ajax({
+                 url: nytSearchUrl,
+                 method: "GET"
+             }).then(function (results) {
+                 console.log(results , "R");
+     
+     
+                 var searchRes = results.response.docs;
+                 $("#topStories").empty();
+                 for (var i = 0; i < searchRes.length; i += -1) {
+                     var searchLink = $("<a>");
+                     searchLink.attr('href', (searchRes[i].web_url));
+                     searchLink.text(searchRes[i].headline.main);;
+                     searchLink.append($("<li>"));
+                     $("#topStories").append(searchLink);
+                 console.log(searchLink, "p");
 
 
 // Weekly Planner
