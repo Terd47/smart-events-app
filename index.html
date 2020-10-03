@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bulma.io -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="Assets/css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        
+    <div class="tile is-ancestor">
+        <!-- News -->
+       <div class="tile is-3 is-parent">
+           <div class="tile is-child notification is-primary">
+                <h1>News</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat 
+                    Srpis. Sed eget varius ligula, at volutpat tortor.
+                    vitae congue lectus dolor consequat libero. 
+                </p>
+                <p class="panel-tabs">
+                    <a id="travel" class="is-active">Travel</a>
+                    <a id="world" class="is-active">World</a>
+                    <a id="us" class="is-active">US</a>
+                    <a id="politics" class="is-active">Politics</a>
+                    <a id="business" class="is-active">Business</a>
+                </p>
+                <div class="panel-block">
+                    <p class="control has-icons-left">
+                        <input id="search" class="input is-primary" type="text" placeholder="Search Article">
+                        <button id="searchBtn">Search</button>
+                        <span class="icon is-left">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </span>
+                    </p>
+                </div>
+                <a id="health" class="panel-block is-active">
+                    <span class="panel-icon">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                    </span>
+                    Health
+                </a>
+                <a id="sports" class="panel-block is-active">
+                    <span class="panel-icon">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                    </span>
+                    Sports
+                </a>
+                <a id="food" class="panel-block is-active">
+                    <span class="panel-icon">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                    </span>
+                    Food
+                </a>
+                <a id="insider" class="panel-block is-active">
+                    <span class="panel-icon">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                    </span>
+                    Insider
+                </a>
+            </article> 
+            <ul id="topStories">
+            </ul>
+       </div>
+         <!-- Samantha comments here!! -->
+       
+       <div class="tile is-9 is-vertical is-parent">
+        <!-- Weather -->
+        <div class="tile is-child notification is-info">
+            <h1>Weather</h1>
+            <!-- new comment -->
+        </div>
+
+        <!-- Weekly Planner -->
+        <div class="tile is-child notification is-warning">
+            <div class="tile">
+                
+                <!-- Days of the week -->
+                <div class="tile is-ancestor is-vertical">
+                    <div class="tile is-parent">
+                        <h1>Weekly Planner</h1>
+                    </div>
+                    <div class="tile is-parent">
+                        <div class="tile is-child notification is-info plannerTile">
+                            <div class="plannerHeader">
+                                
+                            </div>
+                            <hr>
+                            <div class="plannerContent">
+                                    <ul class="plannerUL">
+                                    
+                                    </ul>
+                                    <input class="input" type="text" placeholder="Add an event">
+                                    <!-- Time -->
+                                    <div class="select">
+                                        <select>
+                                                <option>6:00 am</option>
+                                                <option>6:30 am</option>
+                                                <option>7:00 am</option>
+                                                <option>7:30 am</option>
+                                                <option>8:00 am</option>
+                                                <option>8:30 am</option>
+                                                <option>9:00 am</option>
+                                                <option>9:30 am</option>
+                                                <option>10:00 am</option>
+                                                <option>10:30 am</option>
+                                                <option>11:00 am</option>
+                                                <option>11:30 am</option>
+                                                <option>12:00 pm</option>
+                                                <option>12:30 pm</option>
+                                                <option>1:00 pm</option>
+                                                <option>1:30 pm</option>
+                                                <option>2:00 pm</option>
+                                                <option>2:30 pm</option>
+                                                <option>3:00 pm</option>
+                                                <option>3:30 pm</option>
+                                                <option>4:00 pm</option>
+                                                <option>4:30 pm</option>
+                                                <option>5:00 pm</option>
+                                                <option>5:30 pm</option>
+                                                <option>6:00 pm</option>
+                                                <option>6:30 pm</option>
+                                                <option>7:00 pm</option>
+                                                <option>7:30 pm</option>
+                                                <option>8:00 pm</option>
+                                                <option>8:30 pm</option>
+                                                <option>9:00 pm</option>
+                                                <option>9:30 pm</option>
+                                                <option>10:00 pm</option>
+                                                <option>10:30 pm</option>
+                                                <option>11:00 pm</option>
+                                                <option>11:30 pm</option>
+                                                <option>12:00 am</option>
+                                                <option>12:30 am</option>
+                                                <option>1:00 am</option>
+                                                <option>1:30 am</option>
+                                                <option>2:00 am</option>
+                                                <option>2:30 am</option>
+                                                <option>3:00 am</option>
+                                                <option>3:30 am</option>
+                                                <option>4:00 am</option>
+                                                <option>4:30 am</option>
+                                                <option>5:00 am</option>
+                                                <option>5:30 am</option>
+                                        </select>
+                                    </div>
+                                    <input type="submit" class="button is-warning">
+                            </div>
+                        </div>
+                        <div class="tile is-child notification is-info plannerTile">
+                            <div class="plannerHeader">
+
+                            </div>
+                            <hr>
+                            <div class="plannerContent">
+                                    <ul class="plannerUL">
+                            
+                                    </ul>
+                                    <input class="input" type="text" placeholder="Add an event">
+                                    <!-- Time -->
+                                    <div class="select">
+                                        <select>
+                                                <option>6:00 am</option>
+                                                <option>6:30 am</option>
+                                                <option>7:00 am</option>
+                                                <option>7:30 am</option>
+                                                <option>8:00 am</option>
+                                                <option>8:30 am</option>
+                                                <option>9:00 am</option>
+                                                <option>9:30 am</option>
+                                                <option>10:00 am</option>
+                                                <option>10:30 am</option>
+                                                <option>11:00 am</option>
+                                                <option>11:30 am</option>
+                                                <option>12:00 pm</option>
+                                                <option>12:30 pm</option>
+                                                <option>1:00 pm</option>
+                                                <option>1:30 pm</option>
+                                                <option>2:00 pm</option>
+                                                <option>2:30 pm</option>
+                                                <option>3:00 pm</option>
+                                                <option>3:30 pm</option>
+                                                <option>4:00 pm</option>
+                                                <option>4:30 pm</option>
+                                                <option>5:00 pm</option>
+                                                <option>5:30 pm</option>
+                                                <option>6:00 pm</option>
+                                                <option>6:30 pm</option>
+                                                <option>7:00 pm</option>
+                                                <option>7:30 pm</option>
+                                                <option>8:00 pm</option>
+                                                <option>8:30 pm</option>
+                                                <option>9:00 pm</option>
+                                                <option>9:30 pm</option>
+                                                <option>10:00 pm</option>
+                                                <option>10:30 pm</option>
+                                                <option>11:00 pm</option>
+                                                <option>11:30 pm</option>
+                                                <option>12:00 am</option>
+                                                <option>12:30 am</option>
+                                                <option>1:00 am</option>
+                                                <option>1:30 am</option>
+                                                <option>2:00 am</option>
+                                                <option>2:30 am</option>
+                                                <option>3:00 am</option>
+                                                <option>3:30 am</option>
+                                                <option>4:00 am</option>
+                                                <option>4:30 am</option>
+                                                <option>5:00 am</option>
+                                                <option>5:30 am</option>
+                                        </select>
+                                    </div>
+                                    <input type="submit" class="button is-warning">
+                            </div>
+                        </div>
+                        <div class="tile is-child notification is-info plannerTile">
+                            <div class="plannerHeader">
+                                
+                            </div>
+                            <hr>
+                            <div class="plannerContent">
+                                    <ul class="plannerUL">
+                                
+                                    </ul>
+                                    <input class="input" type="text" placeholder="Add an event">
+                                    <!-- Time -->
+                                    <div class="select">
+                                        <select>
+                                                <option>6:00 am</option>
+                                                <option>6:30 am</option>
+                                                <option>7:00 am</option>
+                                                <option>7:30 am</option>
+                                                <option>8:00 am</option>
+                                                <option>8:30 am</option>
+                                                <option>9:00 am</option>
+                                                <option>9:30 am</option>
+                                                <option>10:00 am</option>
+                                                <option>10:30 am</option>
+                                                <option>11:00 am</option>
+                                                <option>11:30 am</option>
+                                                <option>12:00 pm</option>
+                                                <option>12:30 pm</option>
+                                                <option>1:00 pm</option>
+                                                <option>1:30 pm</option>
+                                                <option>2:00 pm</option>
+                                                <option>2:30 pm</option>
+                                                <option>3:00 pm</option>
+                                                <option>3:30 pm</option>
+                                                <option>4:00 pm</option>
+                                                <option>4:30 pm</option>
+                                                <option>5:00 pm</option>
+                                                <option>5:30 pm</option>
+                                                <option>6:00 pm</option>
+                                                <option>6:30 pm</option>
+                                                <option>7:00 pm</option>
+                                                <option>7:30 pm</option>
+                                                <option>8:00 pm</option>
+                                                <option>8:30 pm</option>
+                                                <option>9:00 pm</option>
+                                                <option>9:30 pm</option>
+                                                <option>10:00 pm</option>
+                                                <option>10:30 pm</option>
+                                                <option>11:00 pm</option>
+                                                <option>11:30 pm</option>
+                                                <option>12:00 am</option>
+                                                <option>12:30 am</option>
+                                                <option>1:00 am</option>
+                                                <option>1:30 am</option>
+                                                <option>2:00 am</option>
+                                                <option>2:30 am</option>
+                                                <option>3:00 am</option>
+                                                <option>3:30 am</option>
+                                                <option>4:00 am</option>
+                                                <option>4:30 am</option>
+                                                <option>5:00 am</option>
+                                                <option>5:30 am</option>
+                                        </select>
+                                    </div>
+                                    <input type="submit" class="button is-warning">
+                            </div>
+                        </div>
+                        <div class="tile is-child notification is-info plannerTile">
+                            <div class="plannerHeader">
+
+                            </div>
+                            <hr>
+                            <div class="plannerContent">
+                                    <ul class="plannerUL">
+                                
+                                    </ul>
+                                    <input class="input" type="text" placeholder="Add an event">
+                                    <!-- Time -->
+                                    <div class="select">
+                                        <select>
+                                                <option>6:00 am</option>
+                                                <option>6:30 am</option>
+                                                <option>7:00 am</option>
+                                                <option>7:30 am</option>
+                                                <option>8:00 am</option>
+                                                <option>8:30 am</option>
+                                                <option>9:00 am</option>
+                                                <option>9:30 am</option>
+                                                <option>10:00 am</option>
+                                                <option>10:30 am</option>
+                                                <option>11:00 am</option>
+                                                <option>11:30 am</option>
+                                                <option>12:00 pm</option>
+                                                <option>12:30 pm</option>
+                                                <option>1:00 pm</option>
+                                                <option>1:30 pm</option>
+                                                <option>2:00 pm</option>
+                                                <option>2:30 pm</option>
+                                                <option>3:00 pm</option>
+                                                <option>3:30 pm</option>
+                                                <option>4:00 pm</option>
+                                                <option>4:30 pm</option>
+                                                <option>5:00 pm</option>
+                                                <option>5:30 pm</option>
+                                                <option>6:00 pm</option>
+                                                <option>6:30 pm</option>
+                                                <option>7:00 pm</option>
+                                                <option>7:30 pm</option>
+                                                <option>8:00 pm</option>
+                                                <option>8:30 pm</option>
+                                                <option>9:00 pm</option>
+                                                <option>9:30 pm</option>
+                                                <option>10:00 pm</option>
+                                                <option>10:30 pm</option>
+                                                <option>11:00 pm</option>
+                                                <option>11:30 pm</option>
+                                                <option>12:00 am</option>
+                                                <option>12:30 am</option>
+                                                <option>1:00 am</option>
+                                                <option>1:30 am</option>
+                                                <option>2:00 am</option>
+                                                <option>2:30 am</option>
+                                                <option>3:00 am</option>
+                                                <option>3:30 am</option>
+                                                <option>4:00 am</option>
+                                                <option>4:30 am</option>
+                                                <option>5:00 am</option>
+                                                <option>5:30 am</option>
+                                        </select>
+                                    </div>
+                                    <input type="submit" class="button is-warning">
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="tile is-parent">
+                        <div class="tile is-child notification is-info plannerTile">
+                            <div class="plannerHeader">
+
+                            </div>
+                            <hr>
+                            <div class="plannerContent">
+                                    <ul class="plannerUL">
+                                
+                                    </ul>
+                                    <input class="input" type="text" placeholder="Add an event">
+                                    <!-- Time -->
+                                    <div class="select">
+                                        <select>
+                                                <option>6:00 am</option>
+                                                <option>6:30 am</option>
+                                                <option>7:00 am</option>
+                                                <option>7:30 am</option>
+                                                <option>8:00 am</option>
+                                                <option>8:30 am</option>
+                                                <option>9:00 am</option>
+                                                <option>9:30 am</option>
+                                                <option>10:00 am</option>
+                                                <option>10:30 am</option>
+                                                <option>11:00 am</option>
+                                                <option>11:30 am</option>
+                                                <option>12:00 pm</option>
+                                                <option>12:30 pm</option>
+                                                <option>1:00 pm</option>
+                                                <option>1:30 pm</option>
+                                                <option>2:00 pm</option>
+                                                <option>2:30 pm</option>
+                                                <option>3:00 pm</option>
+                                                <option>3:30 pm</option>
+                                                <option>4:00 pm</option>
+                                                <option>4:30 pm</option>
+                                                <option>5:00 pm</option>
+                                                <option>5:30 pm</option>
+                                                <option>6:00 pm</option>
+                                                <option>6:30 pm</option>
+                                                <option>7:00 pm</option>
+                                                <option>7:30 pm</option>
+                                                <option>8:00 pm</option>
+                                                <option>8:30 pm</option>
+                                                <option>9:00 pm</option>
+                                                <option>9:30 pm</option>
+                                                <option>10:00 pm</option>
+                                                <option>10:30 pm</option>
+                                                <option>11:00 pm</option>
+                                                <option>11:30 pm</option>
+                                                <option>12:00 am</option>
+                                                <option>12:30 am</option>
+                                                <option>1:00 am</option>
+                                                <option>1:30 am</option>
+                                                <option>2:00 am</option>
+                                                <option>2:30 am</option>
+                                                <option>3:00 am</option>
+                                                <option>3:30 am</option>
+                                                <option>4:00 am</option>
+                                                <option>4:30 am</option>
+                                                <option>5:00 am</option>
+                                                <option>5:30 am</option>
+                                        </select>
+                                    </div>
+                                    <input type="submit" class="button is-warning">
+                            </div>
+                        </div>
+                        <div class="tile is-child notification is-info plannerTile">
+                            <div class="plannerHeader">
+
+                            </div>
+                            <hr>
+                            <div class="plannerContent">
+                                    <ul class="plannerUL">
+                                
+                                    </ul>
+                                    <input class="input" type="text" placeholder="Add an event">
+                                    <!-- Time -->
+                                    <div class="select">
+                                        <select>
+                                                <option>6:00 am</option>
+                                                <option>6:30 am</option>
+                                                <option>7:00 am</option>
+                                                <option>7:30 am</option>
+                                                <option>8:00 am</option>
+                                                <option>8:30 am</option>
+                                                <option>9:00 am</option>
+                                                <option>9:30 am</option>
+                                                <option>10:00 am</option>
+                                                <option>10:30 am</option>
+                                                <option>11:00 am</option>
+                                                <option>11:30 am</option>
+                                                <option>12:00 pm</option>
+                                                <option>12:30 pm</option>
+                                                <option>1:00 pm</option>
+                                                <option>1:30 pm</option>
+                                                <option>2:00 pm</option>
+                                                <option>2:30 pm</option>
+                                                <option>3:00 pm</option>
+                                                <option>3:30 pm</option>
+                                                <option>4:00 pm</option>
+                                                <option>4:30 pm</option>
+                                                <option>5:00 pm</option>
+                                                <option>5:30 pm</option>
+                                                <option>6:00 pm</option>
+                                                <option>6:30 pm</option>
+                                                <option>7:00 pm</option>
+                                                <option>7:30 pm</option>
+                                                <option>8:00 pm</option>
+                                                <option>8:30 pm</option>
+                                                <option>9:00 pm</option>
+                                                <option>9:30 pm</option>
+                                                <option>10:00 pm</option>
+                                                <option>10:30 pm</option>
+                                                <option>11:00 pm</option>
+                                                <option>11:30 pm</option>
+                                                <option>12:00 am</option>
+                                                <option>12:30 am</option>
+                                                <option>1:00 am</option>
+                                                <option>1:30 am</option>
+                                                <option>2:00 am</option>
+                                                <option>2:30 am</option>
+                                                <option>3:00 am</option>
+                                                <option>3:30 am</option>
+                                                <option>4:00 am</option>
+                                                <option>4:30 am</option>
+                                                <option>5:00 am</option>
+                                                <option>5:30 am</option>
+                                        </select>
+                                    </div>
+                                    <input type="submit" class="button is-warning">
+                            </div>
+                        </div>
+                        <div class="tile is-child notification is-info plannerTile">
+                            <div class="plannerHeader">
+
+                            </div>
+                            <hr>
+                            <div class="plannerContent">
+                                    <ul class="plannerUL">
+                                
+                                    </ul>
+                                    <input class="input" type="text" placeholder="Add an event">
+                                    <!-- Time -->
+                                    <div class="select">
+                                        <select>
+                                                <option>6:00 am</option>
+                                                <option>6:30 am</option>
+                                                <option>7:00 am</option>
+                                                <option>7:30 am</option>
+                                                <option>8:00 am</option>
+                                                <option>8:30 am</option>
+                                                <option>9:00 am</option>
+                                                <option>9:30 am</option>
+                                                <option>10:00 am</option>
+                                                <option>10:30 am</option>
+                                                <option>11:00 am</option>
+                                                <option>11:30 am</option>
+                                                <option>12:00 pm</option>
+                                                <option>12:30 pm</option>
+                                                <option>1:00 pm</option>
+                                                <option>1:30 pm</option>
+                                                <option>2:00 pm</option>
+                                                <option>2:30 pm</option>
+                                                <option>3:00 pm</option>
+                                                <option>3:30 pm</option>
+                                                <option>4:00 pm</option>
+                                                <option>4:30 pm</option>
+                                                <option>5:00 pm</option>
+                                                <option>5:30 pm</option>
+                                                <option>6:00 pm</option>
+                                                <option>6:30 pm</option>
+                                                <option>7:00 pm</option>
+                                                <option>7:30 pm</option>
+                                                <option>8:00 pm</option>
+                                                <option>8:30 pm</option>
+                                                <option>9:00 pm</option>
+                                                <option>9:30 pm</option>
+                                                <option>10:00 pm</option>
+                                                <option>10:30 pm</option>
+                                                <option>11:00 pm</option>
+                                                <option>11:30 pm</option>
+                                                <option>12:00 am</option>
+                                                <option>12:30 am</option>
+                                                <option>1:00 am</option>
+                                                <option>1:30 am</option>
+                                                <option>2:00 am</option>
+                                                <option>2:30 am</option>
+                                                <option>3:00 am</option>
+                                                <option>3:30 am</option>
+                                                <option>4:00 am</option>
+                                                <option>4:30 am</option>
+                                                <option>5:00 am</option>
+                                                <option>5:30 am</option>
+                                        </select>
+                                    </div>
+                                    <input type="submit" class="button is-warning">
+                            </div>
+                        </div>
+                        <div class="tile is-child notification is-info">
+                            <button id="clearSch">Clear Schedule</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+
+        
+        
+    </div>
+    
+
+        
+    <div class="tile is-ancestor">
+        <!-- Event Search -->
+        <div class="tile is-parent">
+            <div class="tile is-child notification is-danger">
+                <h1>Event Search</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam 
+                    dicta officia laudantium incidunt autem labore ducimus minus, error 
+                    dolorem magni saepe unde quia iste minima est aspernatur ullam 
+                    recusandae? Hic pariatur ipsam voluptates molestias quos sint dicta 
+                    accusamus in rem?
+                </p>
+            </div>
+        </div>
+    </div>
+        
+    </div>
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="Assets/js/script.js"></script>
+</body>
+</html>
