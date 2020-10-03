@@ -8,7 +8,64 @@ var ticketmasterKey = "KiAinN6vNRl0b9VY44tRzV4fBlEOdB5C";
 var ticketmasterurl = "https://app.ticketmaster.com/discovery/v2/classifications.json?apikey=" + ticketmasterKey;
 
 var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
-var nyTimesurl = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + nyTimesKey;
+// ------------------------------------tabs-for-news-----------------------------------------------------------------------
+$(".is-active").on("click", function(){
+    var section = $(this).text().trim();
+    
+     var nyTimesUrl = "https://api.nytimes.com/svc/topstories/v2/" + section + ".json?api-key=" + nyTimesKey;
+
+     $.ajax({
+         url: nyTimesUrl,
+         method: 'GET'
+     }).then(function (response) {
+             console.log(response);
+         
+
+             $(".is-active").on("click", function () {
+                 $('#topStories').empty();
+                 for (var i = 0; i < response.results.length; i += 11) {
+                     var link = $("<a>");
+                     link.attr('href', (response.results[i].short_url));
+                     link.text(response.results[i].title);
+                     link.append($("<li>"));
+                     $("#topStories").append(link);
+                 }
+             });
+
+         });
+
+         //-------------------------------------search for news-------------------------------------------
+         var searchId = $("#search");
+         var searchTxt = "";
+         var searchBtn = $("#searchBtn");
+     
+         
+         searchBtn.click(function () {
+             event.preventDefault();
+             searchTxt = searchId.val().trim();
+             console.log(searchTxt);
+     
+             var nytSearckKey = "ZAYcM5GbhkBjdLu6GGSpxwqrYypoxmoG";
+             var nytSearchUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTxt +"&api-key=" + nytSearckKey;
+             console.log(nytSearchUrl + "--SURL--");
+     
+             
+             $.ajax({
+                 url: nytSearchUrl,
+                 method: "GET"
+             }).then(function (results) {
+                 console.log(results , "R");
+     
+     
+                 var searchRes = results.response.docs;
+                 $("#topStories").empty();
+                 for (var i = 0; i < searchRes.length; i += -1) {
+                     var searchLink = $("<a>");
+                     searchLink.attr('href', (searchRes[i].web_url));
+                     searchLink.text(searchRes[i].headline.main);;
+                     searchLink.append($("<li>"));
+                     $("#topStories").append(searchLink);
+                 console.log(searchLink, "p");
 
 
 // Weekly Planner
@@ -135,3 +192,4 @@ $('input:submit').on("click", function(event){
 });
 
 $("#clearSch").on("click", clearSchedule);
+});
