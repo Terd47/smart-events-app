@@ -1,6 +1,3 @@
-var openWeatherKey = "7f0107959f91d24fd331487876d42456";
-var openWeatherurl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid=" + openWeatherKey;
-
 var calendarificKey = "	f51769744b4472595fff806872c68a32095c4dc4";
 var calendarificurl = "https://calendarific.com/api/v2/holidays?api_key=" + calendarificKey;
 
@@ -11,6 +8,107 @@ var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
 var nyTimesurl = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + nyTimesKey;
 
 
+// Weather
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+        var p = $("<p>");
+        p.text("Geolocation is not supported by this browser.");
+        $(".weatherOverview").append(p);
+    }
+}
+
+function showPosition(position) {
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    console.log(lat + ", " + lon);
+    var openWeatherKey = "7f0107959f91d24fd331487876d42456";
+    var openWeatherurl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=" + openWeatherKey;
+
+    $.ajax({
+        url: openWeatherurl
+    }).then(function(response){
+        console.log(response);
+        // Description Section
+        var desDiv = $("<div>");
+        desDiv.addClass("tile is-child weatherTile");
+        var desH = $("<h3>");
+        desH.text("Overview");
+        desDiv.append(desH);
+        // Icon
+        var img = $("<img>");
+        img.attr("src", "Assets/images/"+response.current.weather[0].icon+".png");
+        desDiv.append(img);
+
+        var descriptionTxt = $("<p>");
+        descriptionTxt.text(response.current.weather[0].description);
+        desDiv.append(descriptionTxt);
+        // Appending div
+        $(".weatherOverview").append(desDiv);
+
+
+        // Temperature Section
+        var tempDiv = $("<div>");
+        tempDiv.addClass("tile is-child weatherTile");
+        var tempH = $("<h4>");
+        tempH.text("Temperature");
+        tempDiv.append(tempH);
+
+        // Farenheit
+        var F = response.current.temp;
+                F = F.toFixed(1);
+                var faren = $("<p>");
+                faren.text(F + " ° F");
+        tempDiv.append(faren);
+        // Celcius
+        var C = (response.current.temp - 32) * 5/9;
+                C = C.toFixed(1);
+                var celc = $("<p>");
+                celc.text(C + " ° C");
+        tempDiv.append(celc);
+        // Appending div
+        $(".weatherOverview").append(tempDiv);
+
+        // Wind Section
+        var windDiv = $("<div>");
+        windDiv.addClass("tile is-child weatherTile");
+        var windH = $("<h4>");
+        windH.text("Wind");
+        windDiv.append(windH);
+        
+        var windSpeed = $("<p>");
+        windSpeed.text("Wind Speed: " + response.current.wind_speed + " MPH");
+        windDiv.append(windSpeed);
+
+        var windDeg = $("<p>");
+        var deg = response.current.wind_deg;
+        if (deg > 330.1 && deg < 30.1) {
+            windDeg.text("Direction: N");
+        } else if (deg > 30.1 && deg < 60.1) {
+            windDeg.text("Direction: NE");
+        } else if (deg > 60.1 && deg < 120.1) {
+            windDeg.text("Direction: E");
+        } else if (deg > 120.1 && deg < 150.1) {
+            windDeg.text("Direction: SE");
+        } else if (deg > 150.1 && deg < 210.1) {
+            windDeg.text("Direction: S");
+        } else if (deg > 210.1 && deg < 240.1) {
+            windDeg.text("Direction: SW");
+        } else if (deg > 240.1 && deg < 300.1) {
+            windDeg.text("Direction: W");
+        } else if (deg > 300.1 && deg < 330.1) {
+            windDeg.text("Direction: NW");
+        }
+        windDiv.append(windDeg);
+        // Appending div
+        $(".weatherOverview").append(windDiv);
+    });
+}
+
+getLocation();
+
 // Weekly Planner
 
 // Checking local storage for previously saved events 
@@ -20,13 +118,12 @@ function checkSaved() {
             for (var e = 0; e < $(".plannerHeader").length; e++){
                 //   Sets text on match
                 if (localStorage.key(i) == $(".plannerHeader").eq(e).text()){
-                    console.log("matched");
                     var lis = localStorage.getItem(localStorage.key(i));
                 // Creates lis with content from storage
                     $(".plannerUL").eq(e).append(lis);
                     
                 } else {
-                    console.log("failed");
+                    console.log("localstorage failed");
                     
                 }
             }
