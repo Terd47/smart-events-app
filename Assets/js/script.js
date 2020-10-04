@@ -19,7 +19,7 @@ $.ajax({
     url: calendarificurl,
     method: 'GET'
 }).then(function (response) {
-        console.log(response, "CC");
+        
 
         var holiday = response.response.holidays;
         for(var i =0; i<7; i++){
@@ -31,7 +31,7 @@ $.ajax({
               $(".plannerUL").eq(i).append(holList);
           } 
 
-          console.log($(".date").eq(i).data("date"));
+         
         }}
     
 });
@@ -70,24 +70,6 @@ function localAttractions(){
                attractImage.attr('src',response._embedded.attractions[i].images[2].url)
                placeName.text(response._embedded.attractions[i].name + " ");
 
-               var eventDate = events._embedded.events[i].dates.start.localDate;
-               placeName.attr("data-date", eventDate);
-               
-            placeName.on('click', function(){
-            
-                for (var i = 0; i < 7; i++) {
-                    
-                    if ($(".date").eq(i).data('date') == $(this).data('date')) {
-                        
-                        console.log($(this).text());
-                        var e = $("<li>");
-                        e.text($(this).text());
-                        $(".plannerUL").eq(i).append(e);
-                        saveContent();
-                    }
-                }
-                
-            })
                $('#attractions').append(placeName);
                $('#attractions').append(attractImage);
 
@@ -172,7 +154,7 @@ $(".is-active").on("click", function(){
          url: nyTimesUrl,
          method: 'GET'
      }).then(function (response) {
-             console.log(response);
+             
          
 
              $(".is-active").on("click", function () {
@@ -241,14 +223,14 @@ function getLocation() {
 function showPosition(position) {
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
-    console.log(lat + ", " + lon);
+    
     var openWeatherKey = "7f0107959f91d24fd331487876d42456";
     var openWeatherurl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=" + openWeatherKey;
 
     $.ajax({
         url: openWeatherurl
     }).then(function(response){
-        console.log(response);
+        
         // Description Section
         var desDiv = $("<div>");
         desDiv.addClass("tile is-child weatherTile");
