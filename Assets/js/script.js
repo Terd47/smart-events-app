@@ -70,12 +70,13 @@ function localAttractions(){
                attractImage.attr('src',response._embedded.attractions[i].images[2].url)
                placeName.text(response._embedded.attractions[i].name + " ");
 
-               var eventDate = events._embedded.events[i].dates.start.localDate;
+               var eventDate = response._embedded.events[i].dates.start.localDate;
+               
                placeName.attr("data-date", eventDate);
                
             placeName.on('click', function(){
             
-                for (var i = 0; i < 7; i++) {
+                for(var i = 0; i < 7; i++) {
                     
                     if ($(".date").eq(i).data('date') == $(this).data('date')) {
                         
@@ -87,11 +88,10 @@ function localAttractions(){
                     }
                 }
                 
-            })
+            });
                $('#attractions').append(placeName);
                $('#attractions').append(attractImage);
 
-               console.log(attract1);
            }
         
         });
@@ -118,7 +118,10 @@ function getEvents(){
             var eventName = $('<div class="event"><p></div>');
             var eventUrl = $('<div class="event"><p></div>');
             var eventDate = events._embedded.events[i].dates.start.localDate;
+            var eventImage = $('<img>')
             eventName.attr("data-date", eventDate);
+            eventImage.attr('src', events._embedded.events[i].images[2].url);
+
 
             eventName.on('click', function(){
             
@@ -143,6 +146,7 @@ function getEvents(){
             $('#events').append(eventName);
             $('#events').append(eventUrl);
             $('#events').append(eventDate);
+            $('#events').append(eventImage);
             
         }
 
