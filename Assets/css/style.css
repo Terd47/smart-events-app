@@ -57,6 +57,16 @@ input[type="submit"] {
 
 
 /* -----------news----------------------- */
+#newsH1{
+    font-family: arial black;
+    font-size: 45px;
+    color: #117AF1;
+}
+
+.is-active{
+    font-size: 17px;
+}
+
 
 #newsImg{
     height: 200px;
@@ -65,12 +75,12 @@ input[type="submit"] {
 
 
 #topStories{
-    color: lightgreen;
+    color: #1154F1;
     font-size: 20px;
     line-height: 35px;
-    font-style: italic;
+    font-style: bold;
     list-style-position: inside;    
-    list-style-type: "__________________________";
+    list-style-type: "____________________________";
 
 }
 
