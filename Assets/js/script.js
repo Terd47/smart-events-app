@@ -198,7 +198,7 @@ $(".is-active").on("click", function(){
      
                  var searchRes = results.response.docs;
                  $("#topStories").empty();
-                 for (var i = 0; i < searchRes.length; i ++) {
+                 for (var i = 0; i < searchRes.length; i += 2) {
                      var searchLink = $("<a>");
                      searchLink.attr('href', (searchRes[i].web_url));
                      searchLink.text(searchRes[i].headline.main);;
