@@ -70,3 +70,8 @@ input[type="submit"] {
     list-style-type: "__________________________";
 
 }
+
+#newsImg{
+    height: 200px;
+    width: 300px;
+}

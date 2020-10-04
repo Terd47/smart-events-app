@@ -143,11 +143,11 @@ $('#justEvents').on('click', function(){
     getEvents();
 });
 
-var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
+
 // ------------------------------------tabs-for-news-----------------------------------------------------------------------
 $(".is-active").on("click", function(){
     var section = $(this).text().trim();
-    
+    var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
      var nyTimesUrl = "https://api.nytimes.com/svc/topstories/v2/" + section + ".json?api-key=" + nyTimesKey;
 
      $.ajax({
@@ -164,6 +164,8 @@ $(".is-active").on("click", function(){
                      link.attr('href', (response.results[i].short_url));
                      link.text(response.results[i].title);
                      link.append($("<li>"));
+                     $("#newsImg").attr("src", (response.results[0].multimedia[i].url));
+                     console.log(response.results[i].multimedia[i].url, "imgUrl");
                      $("#topStories").append(link);
                  }
              });
@@ -201,8 +203,10 @@ $(".is-active").on("click", function(){
                      searchLink.attr('href', (searchRes[i].web_url));
                      searchLink.text(searchRes[i].headline.main);;
                      searchLink.append($("<li>"));
+                     $("#newsImg").attr("src", "https://12bytes.org/wp-content/uploads/search.jpg");
                      $("#topStories").append(searchLink);
                  console.log(searchLink, "p");
+                 
                  }
                 });
          });
