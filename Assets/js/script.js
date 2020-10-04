@@ -205,10 +205,15 @@ $(".is-active").on("click", function(){
                      searchLink.append($("<li>"));
                      $("#newsImg").attr("src", "https://12bytes.org/wp-content/uploads/search.jpg");
                      $("#topStories").append(searchLink);
+                     searchId.val('');
                  console.log(searchLink, "p");
-                 
                  }
+                 })
                 });
+                searchId.keypress(function (e){
+                    if (e.which === 13){
+                        searchBtn.click();
+                    }
          });
                 
 
