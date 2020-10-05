@@ -143,11 +143,11 @@ $('#justEvents').on('click', function(){
     getEvents();
 });
 
-var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
+
 // ------------------------------------tabs-for-news-----------------------------------------------------------------------
 $(".is-active").on("click", function(){
     var section = $(this).text().trim();
-    
+    var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
      var nyTimesUrl = "https://api.nytimes.com/svc/topstories/v2/" + section + ".json?api-key=" + nyTimesKey;
 
      $.ajax({
@@ -157,18 +157,20 @@ $(".is-active").on("click", function(){
              
          
 
-             $(".is-active").on("click", function () {
+            
                  $('#topStories').empty();
-                 for (var i = 0; i < response.results.length; i += 11) {
+                 for (var i = 0; i < response.results.length; i ++) {
                      var link = $("<a>");
                      link.attr('href', (response.results[i].short_url));
                      link.text(response.results[i].title);
                      link.append($("<li>"));
+                     $("#newsImg").attr("src", (response.results[0].multimedia[i].url));
+                     console.log(response.results[i].multimedia[i].url, "imgUrl");
                      $("#topStories").append(link);
                  }
              });
             });
-         });
+         
         
 
          //-------------------------------------search for news-------------------------------------------
@@ -196,15 +198,22 @@ $(".is-active").on("click", function(){
      
                  var searchRes = results.response.docs;
                  $("#topStories").empty();
-                 for (var i = 0; i < searchRes.length; i += -1) {
+                 for (var i = 0; i < searchRes.length; i += 2) {
                      var searchLink = $("<a>");
                      searchLink.attr('href', (searchRes[i].web_url));
                      searchLink.text(searchRes[i].headline.main);;
                      searchLink.append($("<li>"));
+                     $("#newsImg").attr("src", "https://12bytes.org/wp-content/uploads/search.jpg");
                      $("#topStories").append(searchLink);
+                     searchId.val('');
                  console.log(searchLink, "p");
                  }
+                 })
                 });
+                searchId.keypress(function (e){
+                    if (e.which === 13){
+                        searchBtn.click();
+                    }
          });
                 
 
