@@ -45,10 +45,8 @@ var displayEvent = $('#get-events');
 var ticketmasterKey = "KiAinN6vNRl0b9VY44tRzV4fBlEOdB5C";
 var eventDiv = `<div class="columns is-mobile">
                     <div id="attractions"></div>
-                    <div id="events">
+                    <div id="events" class="carousel">
                     </div>
-                    <div id="entertain"></div>
-                    <div id="sports"></div>
                 </div>`;
 
 function localAttractions(){
@@ -59,7 +57,7 @@ function localAttractions(){
         url: ticketmasterurl,
         method: "GET"
       }).then(function(response){
-         $('#get-events').append(eventDiv);
+         $('#event-div').append(eventDiv);
           console.log(response);
           console.log(response._embedded.attractions[0].name);
           var attract1 = response._embedded.attractions.length;
@@ -67,7 +65,7 @@ function localAttractions(){
            for(var i = 0; i < attract1; i++) {
             var attractImage = $('<img>')
             var placeName = $('<p>');
-               attractImage.attr('src',response._embedded.attractions[i].images[2].url)
+               attractImage.attr('src',response._embedded.attractions[i].images[6].url)
                placeName.text(response._embedded.attractions[i].name + " ");
 
                var eventDate = response._embedded.events[i].dates.start.localDate;
@@ -147,6 +145,23 @@ function getEvents(){
             $('#events').append(eventUrl);
             $('#events').append(eventDate);
             $('#events').append(eventImage);
+
+
+            var slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("carousel");
+            for (i = 0; i < slides.length; i++) {
+             slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+
             
         }
 
