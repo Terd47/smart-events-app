@@ -11,10 +11,6 @@
     padding-bottom: 10%;
 }
 /* Weekly Planner Styles */
-.plannerTile {
-    border: 1px solid black;
-    width: auto;
-}
 
 .plannerHeader {
     height: 8%;
@@ -26,11 +22,10 @@
 }
 
 .plannerUL li {
-    background-color: #3090cf;
-    color: white;
     width: 100%;
     border-radius: 10px;
     padding: 3%;
+    transform: scale(0.9);
 }
 
 .select {
@@ -42,27 +37,68 @@ input[type="submit"] {
     width: 50%;
 }
 
+/* Color Swaps */
+body {
+    background-color: #fdfffc;
+}
+/* news */
+.newsSection {
+    background-color: #a8dadc;
+}
+
+
+/* weather */
+.weatherSection {
+    background-color: #a8dadc;
+}
+
+
+/* planner */
+.plannerSection {
+    background-color: #a8dadc;
+}
+
+.plannerTile {
+    background-color: #fdfffc;
+    border: 1px solid #1e1b18;
+}
+
 #clearScheduleDiv {
+    background-color: #a8dadc;
     text-align: center;
 }
 
 #clearSch {
     margin: auto;
+    margin-top: 170px;
+    background-color: #fab95e;
 }
-/* Flip Effects */
+#clearSch:hover {
+    background-color: #ff9f1c;
+}
+.plannerTile .button {
+    background-color: #fab95e;
+}
 
+.plannerTile .button:hover {
+    background-color: #ff9f1c;
+}
 
+.plannerTile li {
+    background-color: #fdfffc;
+    color: #1e1b18;
+}
 
-
-
-
-
+/* events */
+.eventSection {
+    background-color: #e63946;
+}
 
 
 
 /* -----------news----------------------- */
 #topStories{
-    color: lightgreen;
+    color: #1e1b18;
     font-size: 20px;
     line-height: 35px;
     font-style: italic;
@@ -76,3 +112,22 @@ input[type="submit"] {
     padding: 5px;
     max-width: 800px;
 }
+
+/* Media Queries NOT FINISHED */
+@media only screen and (max-width: 1216px) {
+    .container {
+        width: 100%;
+        max-width: 1216px;
+    }
+  }
+
+  @media only screen and (max-width: 1080px) {
+    .tile.is-ancestor {
+        margin-left: -.75rem;
+        margin-right: -.75rem;
+        margin-top: -.75rem;
+    }
+    .tile {
+        display: block;
+    }
+  }
