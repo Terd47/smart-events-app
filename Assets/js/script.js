@@ -44,57 +44,9 @@ var displayEvent = $('#get-events');
 
 var ticketmasterKey = "KiAinN6vNRl0b9VY44tRzV4fBlEOdB5C";
 var eventDiv = `<div class="columns is-mobile">
-                    <div id="attractions"></div>
-                    <div id="events" class="carousel">
+                    <div id="events">
                     </div>
                 </div>`;
-
-function localAttractions(){
-
-    var ticketmasterurl = "https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=" + ticketmasterKey;
-    
-    $.ajax({
-        url: ticketmasterurl,
-        method: "GET"
-      }).then(function(response){
-         $('#event-div').append(eventDiv);
-          console.log(response);
-          console.log(response._embedded.attractions[0].name);
-          var attract1 = response._embedded.attractions.length;
-
-           for(var i = 0; i < attract1; i++) {
-            var attractImage = $('<img>')
-            var placeName = $('<p>');
-               attractImage.attr('src',response._embedded.attractions[i].images[6].url)
-               placeName.text(response._embedded.attractions[i].name + " ");
-
-               var eventDate = response._embedded.events[i].dates.start.localDate;
-               
-               placeName.attr("data-date", eventDate);
-               
-            placeName.on('click', function(){
-            
-                for(var i = 0; i < 7; i++) {
-                    
-                    if ($(".date").eq(i).data('date') == $(this).data('date')) {
-                        
-                        console.log($(this).text());
-                        var e = $("<li>");
-                        e.text($(this).text());
-                        $(".plannerUL").eq(i).append(e);
-                        saveContent();
-                    }
-                }
-                
-            });
-               $('#attractions').append(placeName);
-               $('#attractions').append(attractImage);
-
-           }
-        
-        });
-
-}
 
 function getEvents(){
     var eventUrl = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=" + ticketmasterKey;
@@ -108,11 +60,15 @@ function getEvents(){
          console.log(events);
 
          for(var i = 0; i < event1; i++) {
-            var eventName = $('<div class="event"><p></div>');
-            var eventUrl = $('<div class="event"><p></div>');
+            var eventName = $('<div class="event"><p class"title"></div>');
+            var eventUrl = $('<div class="event"><a></div>');
             var eventDate = events._embedded.events[i].dates.start.localDate;
             var eventImage = $('<img>')
+            eventImage.addClass('is-square');
+            var figure = $('<figure>');
+            figure.addClass('image is-128x128');
             eventName.attr("data-date", eventDate);
+            eventUrl.attr('href', events._embedded.events[i].url);
             eventImage.attr('src', events._embedded.events[i].images[2].url);
 
 
@@ -131,34 +87,20 @@ function getEvents(){
                 }
                 
             })
-
+            
             eventName.text(events._embedded.events[i].name);
             eventUrl.text(events._embedded.events[i].url);
             //eventDate.text(events._embedded.events[i].dates.start.localDate + " " + events._embedded.events[i].dates.start.localTime);
 
             $('#events').append(eventName);
+            figure.append(eventImage);
+            $('#events').append(figure);
             $('#events').append(eventUrl);
             $('#events').append(eventDate);
-            $('#events').append(eventImage);
-
-
-            var slideIndex = 0;
-            showSlides();
-
-            function showSlides() {
-            var i;
-            var slides = document.getElementsByClassName("carousel");
-            for (i = 0; i < slides.length; i++) {
-             slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
-            slides[slideIndex-1].style.display = "block";  
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
+            // $('#events').append(eventImage);
 }
 
             
-        }
 
 
       });
@@ -166,10 +108,6 @@ function getEvents(){
 
 }
 
-
-$('#attractionEvents').on('click', function(){
-    localAttractions();
-});
 
 $('#justEvents').on('click', function(){
     getEvents();

@@ -82,18 +82,10 @@ input[type="submit"] {
     max-width: 1000px;
     position: relative;
     margin: auto;
-
 }
-.active {
-    background-color: #717171;
-  }
-
-@-webkit-keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-  }
-  
-  @keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-  }
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin: 2px;
+    padding: 5px;
+}
