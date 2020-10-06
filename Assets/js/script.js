@@ -89,8 +89,10 @@ function getEvents(){
          console.log(events);
 
          for(var i = 0; i < event1; i++) {
+
             var eventName = $('<p class"title">');
             var eventUrl = $('<a target="_blanck" >');
+
             var eventDate = events._embedded.events[i].dates.start.localDate;
             var eventImage = $('<img>')
             eventImage.addClass('is-square');
@@ -185,6 +187,9 @@ $(".is-active").on("click", function(){
              event.preventDefault();
              searchTxt = searchId.val().trim();
              console.log(searchTxt);
+             if(searchTxt === ''){
+                alert('Please Enter a Search Item');
+               return false;}
      
              var nytSearckKey = "ZAYcM5GbhkBjdLu6GGSpxwqrYypoxmoG";
              var nytSearchUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTxt +"&api-key=" + nytSearckKey;
@@ -217,6 +222,44 @@ $(".is-active").on("click", function(){
                         searchBtn.click();
                     }
          });
+
+           //  --------------------------COVID-19-------------------------------------------------------------------------
+
+        var cov = $("#cov");
+        var covBtn = $("#covBtn");
+    
+        
+        covBtn.click(function () {
+            event.preventDefault();
+    
+            var nytSearckKey = "ZAYcM5GbhkBjdLu6GGSpxwqrYypoxmoG";
+            var nytSearchUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + "Covid-19" +"&api-key=" + nytSearckKey;
+            console.log(nytSearchUrl + "--CVURL--");
+        
+            
+            $.ajax({
+                url: nytSearchUrl,
+                method: "GET"
+            }).then(function (results) {
+                console.log(results , "CO");
+    
+    
+                var covRes = results.response.docs;
+                $("#topStories").empty();
+                for (var i = 0; i < covRes.length; i += 2) {
+                    var covLink = $("<a>");
+                    covLink.attr('href', (covRes[i].web_url));
+                    covLink.text(covRes[i].headline.main);;
+                    covLink.append($("<li>"));
+                    $("#newsImg").attr("src", "https://www.skadden.com/-/media/images/social/twitter/caronavirus_1024x512.jpg");
+                    $("#topStories").append(covLink);
+                console.log(covLink, "coLink");
+                
+            }
+                })
+
+               });
+               
                 
 
 // Weather
