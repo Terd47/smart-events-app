@@ -101,6 +101,9 @@ body {
 
 
 /* -----------news----------------------- */
+.is-active:hover{
+    background-color: #ccc;
+    }
 
 #covBtn{
     display: inline-block;
@@ -133,6 +136,16 @@ body {
     transition: all 0.2s;
     
 }
+
+#searchBtn:hover{
+    border: 2px solid #ccc;
+    background-color: #a8dadc;
+}
+#covBtn:hover{
+    border: 2px solid #ccc;
+    background-color: #ccc;
+}
+
 #newsImg{
     height: 200px;
     width: 300px;
@@ -171,7 +184,7 @@ img{
 }
 img:hover {
     border: 2px solid #ccc;
-   
+}
 
 figure {
     display: block;
