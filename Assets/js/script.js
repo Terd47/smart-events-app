@@ -93,9 +93,6 @@ function getEvents(){
             var eventName = $('<p class"title">');
             var eventUrl = $('<a target="_blanck" >');
 
-            var eventName = $('<p>');
-            var eventUrl = $('<a>');
-
             var eventDate = events._embedded.events[i].dates.start.localDate;
             var eventImage = $('<img>')
             eventImage.addClass('is-square');
@@ -147,6 +144,7 @@ function getEvents(){
 
 $('#justEvents').on('click', function(){
     getEvents();
+    $('justEvents').hide();
 });
 
 
@@ -326,6 +324,7 @@ function showPosition(position) {
                 var celc = $("<p>");
                 celc.text(C + " ° C");
         tempDiv.append(celc);
+    
         // Appending div
         $(".weatherOverview").append(tempDiv);
 
@@ -362,10 +361,34 @@ function showPosition(position) {
         windDiv.append(windDeg);
         // Appending div
         $(".weatherOverview").append(windDiv);
+
+
+        ///// forecast area ..........................................
+
+        var dailyForecast = response.daily.length;
+        var forecast = $('#forecast');
+        for(var i = 0; i < dailyForecast.length; i++){
+            var day1Div = $('<div>');
+            var temp = $('<p>');
+             var humid = $('<p>');
+             var wind = $('<p>');
+             var uv = $('<p>');
+            temp.text(response.daily[i].temp.day);
+            humid.text(response.daily[i].humidity);
+            wind.text(response.daily[i].wind_speed);
+            uv.text(response.daily[i].uvi);
+
+            day1Div.append(temp);
+          forecast.append(day1Div);
+          console.log(uv);
+          
+            
+        }
     });
 }
 
 getLocation();
+
 
 // Weekly Planner
 

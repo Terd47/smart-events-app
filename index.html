@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Smart Events Planner</title>
     <!-- Bulma.io -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <!-- FontAwesome -->
@@ -73,6 +73,7 @@
        
        <div class="tile is-9 is-vertical is-parent">
         <!-- Weather -->
+        <div class="tile is-child" id="thecard">
         <div class="tile is-child notification weatherSection">
             <h1 class="title is-4">Weather</h1>
             <!-- Weather Tiles -->
@@ -81,6 +82,8 @@
                     
                 </div>
             </div>
+        </div>
+        <div class="tile is-child" id="forecast">this is the back</div>
         </div>
 
         <!-- Weekly Planner -->
@@ -586,6 +589,13 @@
     </div>
         
     </div>
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Smart Events planner</strong> Developed by <b>Team Alpha</b>
+          </p>
+        </div>
+      </footer>
    
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="Assets/js/script.js"></script>
