@@ -110,10 +110,17 @@ body {
 
 }
 /*---------------------events------------------*/
-.event {
-    margin: 2px;
-    padding: 5px;
-    max-width: 800px;
+#events {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+    
+}
+#event-div {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
 }
 
 /* Media Queries NOT FINISHED */
