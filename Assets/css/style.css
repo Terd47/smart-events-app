@@ -153,11 +153,10 @@ body {
 }
 /*---------------------events------------------*/
 #events {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-    
+    resize: vertical;
+    overflow: auto;
+    min-width: 50px; /*suggest a min-width & min-height*/
+    min-height: 50px;
 }
 #event-div {
     max-width: 1000px;
@@ -165,8 +164,18 @@ body {
     margin: auto;
 }
 
+
+img{
+    border-radius: 15px;
+    
+}
+img:hover {
+    border: 2px solid #ccc;
+    
+
 figure {
     display: block;
+
 }
 
 /* Media Queries NOT FINISHED */
