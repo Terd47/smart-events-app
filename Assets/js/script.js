@@ -67,8 +67,8 @@ function getEvents(){
          console.log(events);
 
          for(var i = 0; i < event1; i++) {
-            var eventName = $('<div class="event"><p class"title"></div>');
-            var eventUrl = $('<div class="event"><a></div>');
+            var eventName = $('<p class"title">');
+            var eventUrl = $('<a target="_blanck" >');
             var eventDate = events._embedded.events[i].dates.start.localDate;
             var eventImage = $('<img>')
             eventImage.addClass('is-square');
