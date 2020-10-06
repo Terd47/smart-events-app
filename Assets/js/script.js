@@ -216,6 +216,44 @@ $(".is-active").on("click", function(){
                         searchBtn.click();
                     }
          });
+
+           //  --------------------------COVID-19-------------------------------------------------------------------------
+
+        var cov = $("#cov");
+        var covBtn = $("#covBtn");
+    
+        
+        covBtn.click(function () {
+            event.preventDefault();
+    
+            var nytSearckKey = "ZAYcM5GbhkBjdLu6GGSpxwqrYypoxmoG";
+            var nytSearchUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + "Covid-19" +"&api-key=" + nytSearckKey;
+            console.log(nytSearchUrl + "--SURL--");
+        
+            
+            $.ajax({
+                url: nytSearchUrl,
+                method: "GET"
+            }).then(function (results) {
+                console.log(results , "CO");
+    
+    
+                var covRes = results.response.docs;
+                $("#topStories").empty();
+                for (var i = 0; i < covRes.length; i += 2) {
+                    var covLink = $("<a>");
+                    covLink.attr('href', (covRes[i].web_url));
+                    covLink.text(covRes[i].headline.main);;
+                    covLink.append($("<li>"));
+                    $("#newsImg").attr("src", "https://12bytes.org/wp-content/uploads/search.jpg");
+                    $("#topStories").append(covLink);
+                console.log(covLink, "coLink");
+                
+            }
+                })
+
+               });
+               
                 
 
 // Weather
