@@ -42,7 +42,10 @@ body {
     background-color: #fdfffc;
 }
 /* news */
-.newsSection {
+#newsDiv {
+    background-color: #a8dadc;
+}
+.newsDiv {
     background-color: #a8dadc;
 }
 
@@ -129,5 +132,9 @@ body {
     }
     .tile {
         display: block;
+        position: relative;
+    }
+    #newsDiv {
+        zoom: 0.6;
     }
   }
