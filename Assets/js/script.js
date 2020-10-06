@@ -5,7 +5,7 @@ var calendarificurl = "https://calendarific.com/api/v2/holidays?&country=US&year
 var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
 var nyTimesurl = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + nyTimesKey;
 
-
+$(document).ready(function(){
 //holiday---------------------------------------------------------------------------------------------------
 var dateObj = new Date();
 var day = dateObj.getUTCDate();
@@ -27,13 +27,20 @@ $.ajax({
                 
           if  ($(".date").eq(i).data("date") === holiday[x].date.iso){
               var holList = $("<li>");
+              var icon = $("<i>");
+              icon.addClass("fas fa-times");
+              icon.on('click', function(){
+                $(this).parent().remove();
+              });
+
               holList.text(holiday[x].name);
+              holList.prepend(icon);
               $(".plannerUL").eq(i).append(holList);
           } 
 
          
         }}
-    
+        checkSaved();
 });
 
 
@@ -113,11 +120,11 @@ $('#justEvents').on('click', function(){
     getEvents();
 });
 
-var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
+
 // ------------------------------------tabs-for-news-----------------------------------------------------------------------
 $(".is-active").on("click", function(){
     var section = $(this).text().trim();
-    
+    var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
      var nyTimesUrl = "https://api.nytimes.com/svc/topstories/v2/" + section + ".json?api-key=" + nyTimesKey;
 
      $.ajax({
@@ -127,18 +134,20 @@ $(".is-active").on("click", function(){
              
          
 
-             $(".is-active").on("click", function () {
+            
                  $('#topStories').empty();
-                 for (var i = 0; i < response.results.length; i += 11) {
+                 for (var i = 0; i < response.results.length; i ++) {
                      var link = $("<a>");
                      link.attr('href', (response.results[i].short_url));
                      link.text(response.results[i].title);
                      link.append($("<li>"));
+                     $("#newsImg").attr("src", (response.results[0].multimedia[i].url));
+                     console.log(response.results[i].multimedia[i].url, "imgUrl");
                      $("#topStories").append(link);
                  }
              });
             });
-         });
+         
         
 
          //-------------------------------------search for news-------------------------------------------
@@ -166,15 +175,22 @@ $(".is-active").on("click", function(){
      
                  var searchRes = results.response.docs;
                  $("#topStories").empty();
-                 for (var i = 0; i < searchRes.length; i += -1) {
+                 for (var i = 0; i < searchRes.length; i += 2) {
                      var searchLink = $("<a>");
                      searchLink.attr('href', (searchRes[i].web_url));
                      searchLink.text(searchRes[i].headline.main);;
                      searchLink.append($("<li>"));
+                     $("#newsImg").attr("src", "https://12bytes.org/wp-content/uploads/search.jpg");
                      $("#topStories").append(searchLink);
+                     searchId.val('');
                  console.log(searchLink, "p");
                  }
+                 })
                 });
+                searchId.keypress(function (e){
+                    if (e.which === 13){
+                        searchBtn.click();
+                    }
          });
                 
 
@@ -289,11 +305,18 @@ function checkSaved() {
                 //   Sets text on match
                 if (localStorage.key(i) == $(".plannerHeader").eq(e).text()){
                     var lis = localStorage.getItem(localStorage.key(i));
+                    lis = lis.replace(/,/g,'');
                 // Creates lis with content from storage
                     $(".plannerUL").eq(e).append(lis);
-                    
+                    $('.fas').on('click', function() {
+    $(this).parent().remove();
+});
+
+$('.fa-times').on('click', function() {
+    $(this).parent().remove();
+});
                 } else {
-                    console.log("localstorage failed");
+                    console.log("localstorage checked");
                     
                 }
             }
@@ -310,7 +333,18 @@ function saveContent() {
         } else if (lis === "") {
             
         } else {
-            localStorage.setItem($(".plannerHeader").eq(i).text(), lis);
+            var lisArr = [];
+            for (var y = 0; y < lis.length; y++) {
+                if ($(".plannerUL").eq(i).children('li').eq(y).attr('data-position') === null) {
+
+                } else if ($(".plannerUL").eq(i).children('li').eq(y).attr('data-position') === undefined) {
+
+                } else {
+                    lisArr.push($(".plannerUL").eq(i).children('li').eq(y).get(0).outerHTML);
+                    localStorage.setItem($(".plannerHeader").eq(i).text(), lisArr);
+                }
+            }
+            
         }
         
         
@@ -319,10 +353,10 @@ function saveContent() {
 
 function sortContent() {
     Array.prototype.slice.call(document.querySelectorAll('.plannerUL li')).sort(function(a, b) {
-        console.log("A: ");
-        console.log(a);
-        console.log("B: ");
-        console.log(b);
+        if (a.getAttribute('data-position') === null || b.getAttribute('data-position') === null) {
+            return;
+        }
+        
         return a.getAttribute('data-position').localeCompare(b.getAttribute('data-position'));
       }).forEach(function(currValue) {
         currValue.parentNode.appendChild(currValue);
@@ -340,7 +374,7 @@ function GetDates(startDate, daysToAdd) {
     for (var i = 0; i <= daysToAdd; i++) {
         var currentDate = new Date();
         currentDate.setDate(startDate.getDate() + i);
-        aryDates.push(DayAsString(currentDate.getDay()) + ", " + currentDate.getDate() + " " + MonthAsString(currentDate.getMonth()) + " " + currentDate.getFullYear());
+        aryDates.push(DayAsString(currentDate.getDay()) + " " + MonthAsString(currentDate.getMonth()) + ", " + currentDate.getDate() + " " + currentDate.getFullYear());
     }
     
     return aryDates;
@@ -414,7 +448,6 @@ function labelPlanner () {
 }
 
 labelPlanner();
-checkSaved();
 
 
 // Adds User Event 
@@ -428,7 +461,13 @@ $('input:submit').on("click", function(event){
 
     // Creates li element
     var li = $("<li>");
+    var icon = $("<i>");
+    icon.on('click', function(){
+        $(this).parent().remove();
+    });
+    icon.addClass("fas fa-times");
     li.text(userTime + " - " + userEvent);
+    li.prepend(icon);
     li.attr("data-position", dataval);
     $(this).siblings().eq(0).append(li);
     sortContent();
@@ -438,3 +477,6 @@ $('input:submit').on("click", function(event){
 });
 
 $("#clearSch").on("click", clearSchedule); 
+
+
+})

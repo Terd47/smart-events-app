@@ -20,10 +20,9 @@
         <!-- News -->
        <div class="tile is-3 is-parent">
            <div class="tile is-child notification is-primary">
-                <h1>News</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat 
-                    Srpis. Sed eget varius ligula, at volutpat tortor.
-                    vitae congue lectus dolor consequat libero. 
+                <h1 id="newsH1">News</h1>
+                <p>
+                    <img id="newsImg" src="https://www.stlucianewsonline.com/wp-content/uploads/2013/11/Latest-News-415x250.jpg" alt="Image of Newspaper">
                 </p>
                 <p class="panel-tabs">
                     <a id="travel" class="is-active">Travel</a>
@@ -59,11 +58,11 @@
                     </span>
                     Food
                 </a>
-                <a id="insider" class="panel-block is-active">
+                <a id="movies" class="panel-block is-active">
                     <span class="panel-icon">
                         <i class="fas fa-book" aria-hidden="true"></i>
                     </span>
-                    Insider
+                    Movies
                 </a>
             </article> 
             <ul id="topStories">
@@ -74,8 +73,8 @@
        
        <div class="tile is-9 is-vertical is-parent">
         <!-- Weather -->
-        <div class="tile is-child notification is-info">
-            <h1>Weather</h1>
+        <div class="tile is-child notification weatherSection">
+            <h1 class="title is-4">Weather</h1>
             <!-- Weather Tiles -->
             <div class="tile is-ancestor">
                 <div class="tile is-parent weatherOverview">
@@ -85,16 +84,16 @@
         </div>
 
         <!-- Weekly Planner -->
-        <div class="tile is-child notification is-warning">
+        <div class="tile is-child notification plannerSection">
             <div class="tile">
                 
                 <!-- Days of the week -->
                 <div class="tile is-ancestor is-vertical">
                     <div class="tile is-parent">
-                        <h1>Weekly Planner</h1>
+                        <h1 class="title is-4">Weekly Planner</h1>
                     </div>
                     <div class="tile is-parent">
-                        <div class="tile is-child notification is-info plannerTile">
+                        <div class="tile is-child notification plannerTile">
                             <div class="plannerHeader">
                                 
                             </div>
@@ -157,10 +156,10 @@
                                                 <option data-position="21">5:30 am</option>
                                         </select>
                                     </div>
-                                    <input type="submit" class="button is-warning">
+                                    <input type="submit" class="button">
                             </div>
                         </div>
-                        <div class="tile is-child notification is-info plannerTile">
+                        <div class="tile is-child notification plannerTile">
                             <div class="plannerHeader">
 
                             </div>
@@ -223,10 +222,10 @@
                                             <option data-position="21">5:30 am</option>
                                         </select>
                                     </div>
-                                    <input type="submit" class="button is-warning">
+                                    <input type="submit" class="button">
                             </div>
                         </div>
-                        <div class="tile is-child notification is-info plannerTile">
+                        <div class="tile is-child notification plannerTile">
                             <div class="plannerHeader">
                                 
                             </div>
@@ -289,10 +288,10 @@
                                             <option data-position="21">5:30 am</option>
                                         </select>
                                     </div>
-                                    <input type="submit" class="button is-warning">
+                                    <input type="submit" class="button">
                             </div>
                         </div>
-                        <div class="tile is-child notification is-info plannerTile">
+                        <div class="tile is-child notification plannerTile">
                             <div class="plannerHeader">
 
                             </div>
@@ -355,13 +354,13 @@
                                             <option data-position="21">5:30 am</option>
                                         </select>
                                     </div>
-                                    <input type="submit" class="button is-warning">
+                                    <input type="submit" class="button">
                             </div>
                         </div>
                     </div>
                 
                     <div class="tile is-parent">
-                        <div class="tile is-child notification is-info plannerTile">
+                        <div class="tile is-child notification plannerTile">
                             <div class="plannerHeader">
 
                             </div>
@@ -424,10 +423,10 @@
                                             <option data-position="21">5:30 am</option>
                                         </select>
                                     </div>
-                                    <input type="submit" class="button is-warning">
+                                    <input type="submit" class="button">
                             </div>
                         </div>
-                        <div class="tile is-child notification is-info plannerTile">
+                        <div class="tile is-child notification plannerTile">
                             <div class="plannerHeader">
 
                             </div>
@@ -490,10 +489,10 @@
                                             <option data-position="21">5:30 am</option>
                                         </select>
                                     </div>
-                                    <input type="submit" class="button is-warning">
+                                    <input type="submit" class="button">
                             </div>
                         </div>
-                        <div class="tile is-child notification is-info plannerTile">
+                        <div class="tile is-child notification plannerTile">
                             <div class="plannerHeader">
 
                             </div>
@@ -556,10 +555,10 @@
                                             <option data-position="21">5:30 am</option>
                                         </select>
                                     </div>
-                                    <input type="submit" class="button is-warning">
+                                    <input type="submit" class="button">
                             </div>
                         </div>
-                        <div class="tile is-child notification is-info" id="clearScheduleDiv">
+                        <div class="tile is-child notification" id="clearScheduleDiv">
                             <button id="clearSch" class="button">Clear Schedule</button>
                         </div>
                     </div>
