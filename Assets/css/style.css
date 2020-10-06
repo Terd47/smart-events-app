@@ -53,6 +53,7 @@ body {
 /* weather */
 .weatherSection {
     background-color: #a8dadc;
+    background-size: cover;
 }
 
 
@@ -122,6 +123,10 @@ body {
     max-width: 1000px;
     position: relative;
     margin: auto;
+}
+
+figure {
+    display: block;
 }
 
 /* Media Queries NOT FINISHED */
