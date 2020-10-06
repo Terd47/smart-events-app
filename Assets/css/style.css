@@ -53,6 +53,7 @@ body {
 /* weather */
 .weatherSection {
     background-color: #a8dadc;
+    background-size: cover;
 }
 
 
@@ -100,6 +101,7 @@ body {
 
 
 /* -----------news----------------------- */
+
 #topStories{
     color: #1e1b18;
     font-size: 20px;
@@ -122,6 +124,7 @@ body {
     margin: auto;
 }
 
+
 img{
     border-radius: 15px;
     
@@ -129,6 +132,10 @@ img{
 img:hover {
     border: 2px solid #ccc;
     
+
+figure {
+    display: block;
+
 }
 
 /* Media Queries NOT FINISHED */

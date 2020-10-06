@@ -6,6 +6,28 @@ var nyTimesKey = "f5Ql8CE6k7NqGhfkbESevpi2pGC8dDq3";
 var nyTimesurl = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + nyTimesKey;
 
 $(document).ready(function(){
+// Setting Weather Background
+var d = new Date(); // for now
+d.getHours(); 
+d.getMinutes(); 
+d.getSeconds(); 
+if (d.getHours() < 10) {
+    console.log('morning');
+    var imageURL = 'https://media.istockphoto.com/photos/sunrise-over-field-picture-id825148240?k=6&m=825148240&s=612x612&w=0&h=Sdy9V-w5Na5LGYzGudgJYA73U5xjpKDt6OpgGt2ZkRU=';
+    $(".weatherSection").css('background-image', 'url(' + imageURL + ')');
+    $(".weatherSection").css('color', 'black');
+} else if (d.getHours() < 18) {
+    console.log('afternoon');
+    var imageURL = 'https://images.unsplash.com/photo-1536532184021-da5392b55da1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9';
+    $(".weatherSection").css('background-image', 'url(' + imageURL + ')');
+    $(".weatherSection").css('color', 'black');
+} else {
+    console.log('night');
+    var imageURL = 'https://www.createwebquest.com/sites/default/files/images/114484979.jpg';
+    $(".weatherSection").css('background-image', 'url(' + imageURL + ')');
+    $(".weatherSection").css('color', 'white');
+}
+
 //holiday---------------------------------------------------------------------------------------------------
 var dateObj = new Date();
 var day = dateObj.getUTCDate();
@@ -67,8 +89,13 @@ function getEvents(){
          console.log(events);
 
          for(var i = 0; i < event1; i++) {
+
             var eventName = $('<p class"title">');
             var eventUrl = $('<a target="_blanck" >');
+
+            var eventName = $('<p>');
+            var eventUrl = $('<a>');
+
             var eventDate = events._embedded.events[i].dates.start.localDate;
             var eventImage = $('<img>')
             eventImage.addClass('is-square');
@@ -100,10 +127,12 @@ function getEvents(){
             //eventDate.text(events._embedded.events[i].dates.start.localDate + " " + events._embedded.events[i].dates.start.localTime);
 
             $('#events').append(eventName);
+            $('#events').append(eventDate);
+            $('#events').append(eventUrl);
             figure.append(eventImage);
             $('#events').append(figure);
-            $('#events').append(eventUrl);
-            $('#events').append(eventDate);
+            
+            
             // $('#events').append(eventImage);
 }
 
@@ -192,6 +221,44 @@ $(".is-active").on("click", function(){
                         searchBtn.click();
                     }
          });
+
+           //  --------------------------COVID-19-------------------------------------------------------------------------
+
+        var cov = $("#cov");
+        var covBtn = $("#covBtn");
+    
+        
+        covBtn.click(function () {
+            event.preventDefault();
+    
+            var nytSearckKey = "ZAYcM5GbhkBjdLu6GGSpxwqrYypoxmoG";
+            var nytSearchUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + "Covid-19" +"&api-key=" + nytSearckKey;
+            console.log(nytSearchUrl + "--SURL--");
+        
+            
+            $.ajax({
+                url: nytSearchUrl,
+                method: "GET"
+            }).then(function (results) {
+                console.log(results , "CO");
+    
+    
+                var covRes = results.response.docs;
+                $("#topStories").empty();
+                for (var i = 0; i < covRes.length; i += 2) {
+                    var covLink = $("<a>");
+                    covLink.attr('href', (covRes[i].web_url));
+                    covLink.text(covRes[i].headline.main);;
+                    covLink.append($("<li>"));
+                    $("#newsImg").attr("src", "https://12bytes.org/wp-content/uploads/search.jpg");
+                    $("#topStories").append(covLink);
+                console.log(covLink, "coLink");
+                
+            }
+                })
+
+               });
+               
                 
 
 // Weather
@@ -265,7 +332,7 @@ function showPosition(position) {
         windDiv.append(windH);
         
         var windSpeed = $("<p>");
-        windSpeed.text("Wind Speed: " + response.current.wind_speed + " MPH");
+        windSpeed.text("Wind: " + response.current.wind_speed + " MPH");
         windDiv.append(windSpeed);
 
         var windDeg = $("<p>");
@@ -424,7 +491,7 @@ function labelPlanner () {
         // Setting date attribute
         var dateObj = new Date();
         var month = dateObj.getUTCMonth() + 1; //months from 1-12
-        var day = dateObj.getUTCDate() + i;
+        var day = dateObj.getUTCDate() + i -1;
         var year = dateObj.getUTCFullYear();
 
         if (day < 10) {
