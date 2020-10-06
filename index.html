@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <!-- Our CSS -->
     <link rel="stylesheet" href="Assets/css/style.css">
+    
 </head>
 <body>
 
@@ -17,8 +18,13 @@
         
     <div class="tile is-ancestor">
         <!-- News -->
+<<<<<<< HEAD
        <div id="newsDiv" class="tile is-3 is-parent">
            <div class="tile is-child notification is-primary">
+=======
+       <div class="tile is-3 is-parent" id="newsDiv">
+           <div class="tile is-child notification newsDiv">
+>>>>>>> b9a0ae9aa84902d3dd7ca3cfd2fd192853f9355d
                 <h1 id="newsH1">News</h1>
                 <p>
                     <img id="newsImg" src="https://www.stlucianewsonline.com/wp-content/uploads/2013/11/Latest-News-415x250.jpg" alt="Image of Newspaper">
@@ -576,9 +582,10 @@
     <div class="tile is-ancestor">
         <!-- Event Search -->
         <div class="tile is-parent">
-            <div class="tile is-child notification eventSection" id="get-events">
-                <button class = "button" id="attractionEvents">Latest Attractions</button>
-                <button class = "button" id="justEvents">Latest events</button>
+            <div class="tile is-child notification is-danger" id="get-events">
+                <div>
+                    <button class = "button" id="justEvents">Upcoming Events</button>
+                </div>
                 <div id="event-div"></div>
                 
                 
