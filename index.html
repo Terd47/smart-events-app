@@ -19,7 +19,7 @@
     <div class="tile is-ancestor">
         <!-- News -->
        <div class="tile is-3 is-parent" id="newsDiv">
-           <div class="tile is-child notification newsDiv">
+           <div class="tile is-child notification newsDiv" id="newsChild">
                 <h1 id="newsH1">News</h1>
                 <p>
                     <img id="newsImg" src="https://www.stlucianewsonline.com/wp-content/uploads/2013/11/Latest-News-415x250.jpg" alt="Image of Newspaper">
@@ -577,13 +577,10 @@
         <!-- Event Search -->
         <div class="tile is-parent">
             <div class="tile is-child notification is-danger" id="get-events">
-                <div>
+                <div id="show-event">
                     <button class = "button" id="justEvents">Upcoming Events</button>
                 </div>
-                <div id="event-div"></div>
-                
-                
-                
+                <div id="event-div"></div>     
             </div>
         </div>
     </div>
