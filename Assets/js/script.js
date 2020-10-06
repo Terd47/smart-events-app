@@ -20,7 +20,7 @@ if (d.getHours() < 10) {
     console.log('afternoon');
     var imageURL = 'https://images.unsplash.com/photo-1536532184021-da5392b55da1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9';
     $(".weatherSection").css('background-image', 'url(' + imageURL + ')');
-    $(".weatherSection").css('color', 'black');
+    $(".weatherSection").css('color', 'white');
 } else {
     console.log('night');
     var imageURL = 'https://www.createwebquest.com/sites/default/files/images/114484979.jpg';
@@ -284,8 +284,10 @@ function showPosition(position) {
     var openWeatherurl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=" + openWeatherKey;
 
     $.ajax({
-        url: openWeatherurl
+        url: openWeatherurl,
+        method: 'GET'
     }).then(function(response){
+        console.log(response);
         
         // Description Section
         var desDiv = $("<div>");
