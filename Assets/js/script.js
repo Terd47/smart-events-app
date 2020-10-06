@@ -189,6 +189,9 @@ $(".is-active").on("click", function(){
              event.preventDefault();
              searchTxt = searchId.val().trim();
              console.log(searchTxt);
+             if(searchTxt === ''){
+                alert('Please Enter a Search Item');
+               return false;}
      
              var nytSearckKey = "ZAYcM5GbhkBjdLu6GGSpxwqrYypoxmoG";
              var nytSearchUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTxt +"&api-key=" + nytSearckKey;
@@ -233,7 +236,7 @@ $(".is-active").on("click", function(){
     
             var nytSearckKey = "ZAYcM5GbhkBjdLu6GGSpxwqrYypoxmoG";
             var nytSearchUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + "Covid-19" +"&api-key=" + nytSearckKey;
-            console.log(nytSearchUrl + "--SURL--");
+            console.log(nytSearchUrl + "--CVURL--");
         
             
             $.ajax({
@@ -250,7 +253,7 @@ $(".is-active").on("click", function(){
                     covLink.attr('href', (covRes[i].web_url));
                     covLink.text(covRes[i].headline.main);;
                     covLink.append($("<li>"));
-                    $("#newsImg").attr("src", "https://12bytes.org/wp-content/uploads/search.jpg");
+                    $("#newsImg").attr("src", "https://www.skadden.com/-/media/images/social/twitter/caronavirus_1024x512.jpg");
                     $("#topStories").append(covLink);
                 console.log(covLink, "coLink");
                 
