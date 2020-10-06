@@ -14,11 +14,13 @@
 
 .plannerHeader {
     height: 8%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .plannerUL {
     height: 250px;   
     overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .plannerUL li {
@@ -26,49 +28,84 @@
     border-radius: 10px;
     padding: 3%;
     transform: scale(0.9);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.plannerTile:hover{
+    background-color: #abc4ff;
 }
 
 .select {
     width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 input[type="submit"] {
     float: right;
     width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* Color Swaps */
 body {
-    background-color: #fdfffc;
+    background-color: #6290c8;
+    
 }
 /* news */
 #newsDiv {
-    background-color: #a8dadc;
+    background-color: #b6ccfe;
+    
 }
 .newsDiv {
-    background-color: #a8dadc;
+    background-color: #b6ccfe;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
 /* weather */
 .weatherSection {
-    background-color: #a8dadc;
+    background-color: #b6ccfe;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
 }
-
+#forecast{
+    position: relative;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+    transform: rotateY(180deg);
+}
+#thecard{
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+}
+#thecard:hover{
+    transform: rotateY(180deg) ;
+}
 
 /* planner */
 .plannerSection {
-    background-color: #a8dadc;
+    background-color: #b6ccfe;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .plannerTile {
     background-color: #fdfffc;
     border: 1px solid #1e1b18;
+   
 }
 
 #clearScheduleDiv {
-    background-color: #a8dadc;
+    background-color: #b6ccfe;
     text-align: center;
+}
+.panel-block{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #clearSch {
@@ -94,7 +131,8 @@ body {
 
 /* events */
 .eventSection {
-    background-color: #e63946;
+    background-color: #59a5d8;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
@@ -107,6 +145,7 @@ body {
     font-style: italic;
     list-style-position: inside;    
     list-style-type: "__________________________";
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 /*---------------------events------------------*/
@@ -128,7 +167,23 @@ img{
 }
 img:hover {
     border: 2px solid #ccc;
-    
+}   
+ figure {
+    display: block;
+}
+button{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#show-event {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 160px;
+    margin: 15px;
+}
+.title{
+    text-shadow: 2px 2px 4px #000000;
+}
+#get-events{
+    background-color: #59a5d8;
 }
 
 /* Media Queries NOT FINISHED */
