@@ -521,7 +521,7 @@ function labelPlanner () {
         // Setting date attribute
         var dateObj = new Date();
         var month = dateObj.getUTCMonth() + 1; //months from 1-12
-        var day = dateObj.getUTCDate() + i -1;
+        var day = dateObj.getUTCDate() + i;
         var year = dateObj.getUTCFullYear();
 
         if (day < 10) {
