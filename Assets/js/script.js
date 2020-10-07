@@ -32,9 +32,11 @@ if (d.getHours() < 10) {
 var dateObj = new Date();
 var day = dateObj.getUTCDate();
 var month = dateObj.getUTCMonth() + 1;
-
-var calendarificKey = "	f51769744b4472595fff806872c68a32095c4dc4";
-var calendarificurl = "https://calendarific.com/api/v2/holidays?&country=US&year=2020"  + "&month=" + month + "&api_key=f51769744b4472595fff806872c68a32095c4dc4";
+// Eric's Key
+// var calendarificKey = "f51769744b4472595fff806872c68a32095c4dc4";
+// Samantha's Key
+var calendarificKey = "547a6abdc68a933997df885125b45e080477ad08";
+var calendarificurl = "https://calendarific.com/api/v2/holidays?&country=US&year=2020"  + "&month=" + month + "&api_key=" + calendarificKey;
 
 
 $.ajax({
@@ -519,7 +521,7 @@ function labelPlanner () {
         // Setting date attribute
         var dateObj = new Date();
         var month = dateObj.getUTCMonth() + 1; //months from 1-12
-        var day = dateObj.getUTCDate() + i -1;
+        var day = dateObj.getUTCDate() + i;
         var year = dateObj.getUTCFullYear();
 
         if (day < 10) {
