@@ -14,13 +14,11 @@
 
 .plannerHeader {
     height: 8%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .plannerUL {
     height: 250px;   
     overflow: auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .plannerUL li {
@@ -90,18 +88,21 @@ body {
 
 /* planner */
 .plannerSection {
+    color: rgb(255, 225, 187);
     background-color: #b6ccfe;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .plannerTile {
-    background-color: #fdfffc;
+    font-weight: bold;
+    color: darkblue;
+    background-color: rgb(229, 193, 145);
     border: 1px solid #1e1b18;
    
 }
 
 #clearScheduleDiv {
-    background-color: #b6ccfe;
+    background-color: rgb(229, 193, 145);
     text-align: center;
 }
 .panel-block{
@@ -131,15 +132,20 @@ body {
 
 /* events */
 .eventSection {
-    background-color: #59a5d8;
+    background-color: #266996;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
 
 /* -----------news----------------------- */
+#newsDiv{
+    background-color: rgb(229, 193, 145);
+}
+
 .is-active:hover{
-    background-color: #ccc;
+    background-color:white;
+    font-weight: bold;
     }
 
 #covBtn{
@@ -167,7 +173,7 @@ body {
     box-sizing: border-box;
     font-family: sans-serif;
     font-weight: 300;
-    color: lightskyblue;
+    color: darkblue;
     text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
     text-align: center;
     transition: all 0.2s;
@@ -177,10 +183,12 @@ body {
 #searchBtn:hover{
     border: 2px solid #ccc;
     background-color: #a8dadc;
+    font-weight: bold;
 }
 #covBtn:hover{
     border: 2px solid #ccc;
-    background-color: #ccc;
+    background-color: lightblue;
+    font-weight: bold;
 }
 
 #newsImg{
@@ -193,21 +201,40 @@ body {
 }
 
 #topStories{
-    color: #001524;
+    color: darkblue;
     font-size: 20px;
     line-height: 35px;
     font-style: bold;
+    text-align: center;
     list-style-position: inside;    
     list-style-type: "__________________________";
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 /*---------------------events------------------*/
+#justEvents{ display: inline-block;
+    font-family: sans-serif;
+    font-weight: 300;
+    color: darkblue;
+    background-color: #b6ccfe;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+    text-align: center;
+    transition: all 0.2s;
+
+}
+
+#justEvents:hover{
+font-weight: bold;
+}
+
 #events {
     resize: vertical;
     overflow: auto;
     min-width: 50px; /*suggest a min-width & min-height*/
     min-height: 50px;
+    background-color: #b6ccfe;
+    color: darkblue;
+    padding: 30px;
 }
 #event-div {
     max-width: 1000px;
@@ -238,7 +265,7 @@ button{
     text-shadow: 2px 2px 4px #000000;
 }
 #get-events{
-    background-color: #59a5d8;
+    background-color: rgb(229, 193, 145);
 }
 
 /* Media Queries NOT FINISHED */
