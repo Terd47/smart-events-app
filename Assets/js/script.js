@@ -164,7 +164,7 @@ $(".is-active").on("click", function(){
             
                  $('#topStories').empty();
                  for (var i = 0; i < response.results.length; i ++) {
-                     var link = $("<a>");
+                     var link = $("<a target='_blank'>");
                      link.attr('href', (response.results[i].short_url));
                      link.text(response.results[i].title);
                      link.append($("<li>"));
@@ -206,7 +206,7 @@ $(".is-active").on("click", function(){
                  var searchRes = results.response.docs;
                  $("#topStories").empty();
                  for (var i = 0; i < searchRes.length; i += 2) {
-                     var searchLink = $("<a>");
+                     var searchLink = $("<a target='_blank'>");
                      searchLink.attr('href', (searchRes[i].web_url));
                      searchLink.text(searchRes[i].headline.main);;
                      searchLink.append($("<li>"));
@@ -247,7 +247,7 @@ $(".is-active").on("click", function(){
                 var covRes = results.response.docs;
                 $("#topStories").empty();
                 for (var i = 0; i < covRes.length; i += 2) {
-                    var covLink = $("<a>");
+                    var covLink = $("<a target='_blank'>");
                     covLink.attr('href', (covRes[i].web_url));
                     covLink.text(covRes[i].headline.main);;
                     covLink.append($("<li>"));
