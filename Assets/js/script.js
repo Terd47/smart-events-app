@@ -469,7 +469,7 @@ function GetDates(startDate, daysToAdd) {
     for (var i = 0; i <= daysToAdd; i++) {
         var currentDate = new Date();
         currentDate.setDate(startDate.getDate() + i);
-        aryDates.push(DayAsString(currentDate.getDay()) + " " + MonthAsString(currentDate.getMonth()) + ", " + currentDate.getDate() + " " + currentDate.getFullYear());
+        aryDates.push(DayAsString(currentDate.getDay()) + ", " + MonthAsString(currentDate.getMonth()) + " " + currentDate.getDate() + ", " + currentDate.getFullYear());
     }
     
     return aryDates;
