@@ -369,18 +369,18 @@ function showPosition(position) {
 
         var dailyForecast = response.daily.length;
         var forecast = $('#forecast');
-        for(var i = 0; i < dailyForecast.length; i++){
-            var day1Div = $('<div>');
-            var temp = $('<p>');
-             var humid = $('<p>');
-             var wind = $('<p>');
-             var uv = $('<p>');
-            temp.text(response.daily[i].temp.day);
-            humid.text(response.daily[i].humidity);
-            wind.text(response.daily[i].wind_speed);
-            uv.text(response.daily[i].uvi);
+        for(var i = 0; i < dailyForecast; i++){
+            var day1Div = $('<div id=fore>');
+            var temp = $('<p id=fTemp>');
+             var humid = $('<p id=fHum>');
+             var wind = $('<p id=fWind>');
+             var uv = $('<p id=fUv>');
+            temp.text(" Temperature ", response.daily[i].temp.day);
+            humid.text(" Humidity ", response.daily[i].humidity);
+            wind.text(" Wind ", response.daily[i].wind_speed);
+            uv.text(" UV ", response.daily[i].uvi);
 
-            day1Div.append(temp);
+            day1Div.append([i], temp, humid, wind, uv);
           forecast.append(day1Div);
           console.log(uv);
           
