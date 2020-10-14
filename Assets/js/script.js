@@ -287,8 +287,10 @@ function showPosition(position) {
         url: openWeatherurl,
         method: 'GET'
     }).then(function(response){
-        console.log(response);
+        console.log(response, "test");
+        console.log(response.daily);
         
+        var dayForecast = response.daily;
         // Description Section
         var desDiv = $("<div>");
         desDiv.addClass("tile is-child weatherTile");
@@ -375,13 +377,14 @@ function showPosition(position) {
              var humid = $('<p id=fHum>');
              var wind = $('<p id=fWind>');
              var uv = $('<p id=fUv>');
-            temp.text(" Temperature ", response.daily[i].temp.day);
-            humid.text(" Humidity ", response.daily[i].humidity);
-            wind.text(" Wind ", response.daily[i].wind_speed);
-            uv.text(" UV ", response.daily[i].uvi);
+            temp.append(" Temperature: ", dayForecast[i].temp.day);
+            humid.append(" Humidity: ", dayForecast[i].humidity);
+            wind.append(" Wind: ", dayForecast[i].wind_speed);
+            uv.append(" UV: ", dayForecast[i].uvi);
 
+            console.log(dayForecast[i].temp.day, dayForecast[i].humidity, dayForecast[i].wind_speed, dayForecast[i].uvi)
             day1Div.append([i], temp, humid, wind, uv);
-          forecast.append(day1Div);
+            forecast.append(day1Div);
           console.log(uv);
           
             
