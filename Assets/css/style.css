@@ -79,7 +79,7 @@ body {
 }
 
 .forecast-front{
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -94,15 +94,14 @@ body {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     width: 100%;
-    height: 300px;
-  perspective: 1000px;
-    box-sizing: content-box;
     transform: rotateX(180deg);
 }
 
 #fore{
-    line-height: 25px;
+    position: relative;
+    line-height: 20px;
     text-align: center;
+    width: 14%;
 }
 
 #fTemp, #fWind{
@@ -183,7 +182,6 @@ body {
 
 .is-active:hover{
     background-color:white;
-    font-weight: bold;
     }
 
 #covBtn{
@@ -221,12 +219,10 @@ body {
 #searchBtn:hover{
     border: 2px solid #ccc;
     background-color: #a8dadc;
-    font-weight: bold;
 }
 #covBtn:hover{
     border: 2px solid #ccc;
     background-color: lightblue;
-    font-weight: bold;
 }
 
 #newsImg{
@@ -250,9 +246,6 @@ body {
 
 }
 
-a:hover{
-    font-weight: bold;
-}
 /*---------------------events------------------*/
 #justEvents{ display: inline-block;
     font-family: sans-serif;
@@ -330,5 +323,9 @@ button{
     }
     #newsDiv {
         zoom: 0.6;
+    }
+
+    #thecard:hover{
+        transform: none;
     }
   }
