@@ -371,7 +371,7 @@ function showPosition(position) {
 
         var dailyForecast = response.daily.length;
         var forecast = $('#forecast');
-        for(var i = 0; i < dailyForecast; i++){
+        for(var i = 0; i < 7; i++){
             var day1Div = $('<div id=fore>');
             var temp = $('<p id=fTemp>');
              var humid = $('<p id=fHum>');
@@ -382,8 +382,17 @@ function showPosition(position) {
             wind.append(" Wind: ", dayForecast[i].wind_speed);
             uv.append(" UV: ", dayForecast[i].uvi);
 
+            let curr = new Date; 
+            let week = [];
+
+            for (let i = 1; i <= 8; i++) {
+            let first = curr.getDate() - curr.getDay() + i 
+            let day = new Date(curr.setDate(first)).toString().slice(0, 10)
+            week.push(day)
+        
+            }
             console.log(dayForecast[i].temp.day, dayForecast[i].humidity, dayForecast[i].wind_speed, dayForecast[i].uvi)
-            day1Div.append([i], temp, humid, wind, uv);
+            day1Div.append(week[i], temp, humid, wind, uv);
             forecast.append(day1Div);
           console.log(uv);
           
@@ -391,6 +400,29 @@ function showPosition(position) {
         }
     });
 }
+
+
+var d = new Date(); // for now
+d.getHours(); 
+d.getMinutes(); 
+d.getSeconds(); 
+if (d.getHours() < 10) {
+    console.log('morning');
+    var imageURL = 'https://media.istockphoto.com/photos/sunrise-over-field-picture-id825148240?k=6&m=825148240&s=612x612&w=0&h=Sdy9V-w5Na5LGYzGudgJYA73U5xjpKDt6OpgGt2ZkRU=';
+    $("#forecast").css('background-image', 'url(' + imageURL + ')');
+    $("#forecast").css('color', 'black');
+} else if (d.getHours() < 18) {
+    console.log('afternoon');
+    var imageURL = 'https://images.unsplash.com/photo-1536532184021-da5392b55da1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9';
+    $("#forecast").css('background-image', 'url(' + imageURL + ')');
+    $("#forecast").css('color', 'white');
+} else {
+    console.log('night');
+    var imageURL = 'https://www.createwebquest.com/sites/default/files/images/114484979.jpg';
+    $("#forecast").css('background-image', 'url(' + imageURL + ')');
+    $("#forecast").css('color', 'white');
+}
+
 
 getLocation();
 
