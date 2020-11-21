@@ -328,4 +328,8 @@ button{
     #thecard:hover{
         transform: none;
     }
+
+    #forecast{
+        position: absolute;
+    }
   }
